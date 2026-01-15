@@ -211,7 +211,7 @@ jobs:
           SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
           SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 ```
 
 ## JSON Storage
@@ -252,7 +252,7 @@ Compare against previous week's JSON to only email **new** events.
 | `SPOTIFY_CLIENT_SECRET` | Spotify app client secret |
 | `SPOTIFY_REFRESH_TOKEN` | Long-lived refresh token from OAuth |
 | `RESEND_API_KEY` | Resend email API key |
-| `OPENAI_API_KEY` | For LLM deduplication stage |
+| `GEMINI_API_KEY` | For LLM deduplication stage |
 
 ## Dependencies
 
@@ -260,5 +260,5 @@ Compare against previous week's JSON to only email **new** events.
 - `playwright` - JS rendering fallback
 - `beautifulsoup4` - HTML parsing
 - `rapidfuzz` - Levenshtein matching
-- `openai` - LLM deduplication
+- `google-genai` - LLM deduplication (gemini-2.5-flash-lite)
 - `resend` - Email sending

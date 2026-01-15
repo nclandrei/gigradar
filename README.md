@@ -24,7 +24,7 @@ playwright install chromium
 | `SPOTIFY_CLIENT_ID` | Spotify app client ID |
 | `SPOTIFY_CLIENT_SECRET` | Spotify app client secret |
 | `SPOTIFY_REFRESH_TOKEN` | OAuth refresh token (use `scripts/get_refresh_token.py`) |
-| `OPENAI_API_KEY` | OpenAI API key for LLM deduplication |
+| `GEMINI_API_KEY` | Gemini API key for LLM deduplication |
 | `RESEND_API_KEY` | Resend API key for sending emails |
 | `NOTIFY_EMAIL` | Email address to receive digests |
 

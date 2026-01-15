@@ -47,5 +47,5 @@ def stage1_dedup(events: list[Event]) -> list[Event]:
 
 def llm_dedup(events: list[Event]) -> list[Event]:
     """Use LLM to identify remaining duplicates."""
-    # TODO: Implement LLM deduplication with OpenAI
+    # TODO: Implement LLM deduplication with Gemini (gemini-2.5-flash-lite)
     return events

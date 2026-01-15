@@ -21,4 +21,4 @@
 - Dataclasses for models, absolute imports from project root
 - Each scraper exposes a `scrape() -> list[Event]` function
 - Use `services/http.fetch_page(url, needs_js=bool)` for HTTP requests
-- Env vars: `SPOTIFY_*`, `OPENAI_API_KEY`, `RESEND_API_KEY`, `NOTIFY_EMAIL`
+- Env vars: `SPOTIFY_*`, `GEMINI_API_KEY`, `RESEND_API_KEY`, `NOTIFY_EMAIL`
