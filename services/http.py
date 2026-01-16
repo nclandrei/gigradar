@@ -2,13 +2,14 @@ import httpx
 from playwright.sync_api import sync_playwright
 
 
-def fetch_page(url: str, needs_js: bool = False) -> str:
+def fetch_page(url: str, needs_js: bool = False, timeout: int = 30000) -> str:
     """Fetch a page, using Playwright for JS-heavy sites."""
     if needs_js:
         with sync_playwright() as p:
             browser = p.chromium.launch()
             page = browser.new_page()
-            page.goto(url, wait_until="networkidle")
+            page.goto(url, timeout=timeout, wait_until="domcontentloaded")
+            page.wait_for_timeout(3000)  # Allow JS to populate content
             content = page.content()
             browser.close()
             return content
