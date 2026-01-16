@@ -11,5 +11,5 @@ class Event:
     date: datetime
     url: str
     source: str
-    category: Literal["music", "theatre"]
+    category: Literal["music", "theatre", "culture"]
     price: str | None = None

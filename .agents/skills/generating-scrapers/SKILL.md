@@ -11,7 +11,7 @@ Creates scrapers for GigRadar event aggregation following established patterns.
 
 Before starting, collect from user:
 1. **URL** - The events/program page URL
-2. **Category** - `music` or `theatre`
+2. **Category** - `music`, `theatre`, or `culture`
 3. **Screenshot** - Visual reference of the page showing events
 4. **Pagination** - How to access more events (if applicable)
 
@@ -204,6 +204,6 @@ class Event:
     date: datetime       # Event datetime
     url: str             # Absolute URL to event page
     source: str          # Scraper identifier (e.g., "metropolis")
-    category: Literal["music", "theatre"]
+    category: Literal["music", "theatre", "culture"]
     price: str | None    # Price as string (e.g., "50 RON", "Free")
 ```

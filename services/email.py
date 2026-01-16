@@ -18,6 +18,7 @@ def format_event(event: Event) -> str:
 def send_digest(
     music_events: list[Event],
     theatre_events: list[Event],
+    culture_events: list[Event],
     to_email: str,
 ) -> None:
     """Send the weekly digest email via Resend."""
@@ -25,7 +26,8 @@ def send_digest(
 
     music_count = len(music_events)
     theatre_count = len(theatre_events)
-    subject = f"GigRadar Weekly - {music_count} concerts, {theatre_count} theatre shows"
+    culture_count = len(culture_events)
+    subject = f"GigRadar Weekly - {music_count} concerts, {theatre_count} theatre, {culture_count} culture"
 
     body_parts: list[str] = []
 
@@ -40,6 +42,14 @@ def send_digest(
     if theatre_events:
         body_parts.append("## 🎭 Theatre\n")
         for event in theatre_events:
+            body_parts.append(format_event(event))
+
+    if (music_events or theatre_events) and culture_events:
+        body_parts.append("\n---\n")
+
+    if culture_events:
+        body_parts.append("## 🎨 Culture\n")
+        for event in culture_events:
             body_parts.append(format_event(event))
 
     body = "\n".join(body_parts)

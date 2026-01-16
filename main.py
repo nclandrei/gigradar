@@ -10,6 +10,7 @@ from pathlib import Path
 from rapidfuzz import fuzz
 
 from models import Event
+from scrapers.culture import arcub
 from scrapers.music import control, expirat, iabilet, jfr, quantic
 from scrapers.theatre import bulandra
 from services.dedup import llm_dedup, stage1_dedup
@@ -32,6 +33,14 @@ def run_theatre_scrapers() -> list[Event]:
     """Run all theatre scrapers and collect events."""
     events: list[Event] = []
     for scraper in [bulandra]:
+        events.extend(scraper.scrape())
+    return events
+
+
+def run_culture_scrapers() -> list[Event]:
+    """Run all culture scrapers and collect events."""
+    events: list[Event] = []
+    for scraper in [arcub]:
         events.extend(scraper.scrape())
     return events
 
@@ -70,7 +79,7 @@ def load_previous_events() -> set[str]:
         data = json.load(f)
 
     keys: set[str] = set()
-    for event in data.get("music_events", []) + data.get("theatre_events", []):
+    for event in data.get("music_events", []) + data.get("theatre_events", []) + data.get("culture_events", []):
         key = f"{event['artist']}|{event['date']}|{event['venue']}"
         keys.add(key)
 
@@ -80,6 +89,7 @@ def load_previous_events() -> set[str]:
 def save_results(
     music_events: list[Event],
     theatre_events: list[Event],
+    culture_events: list[Event],
     artists: list[str],
 ) -> None:
     """Save results to a date-prefixed JSON file."""
@@ -91,6 +101,7 @@ def save_results(
         "scraped_at": datetime.now().isoformat(),
         "music_events": [asdict(e) for e in music_events],
         "theatre_events": [asdict(e) for e in theatre_events],
+        "culture_events": [asdict(e) for e in culture_events],
         "spotify_artists": artists,
     }
 
@@ -142,30 +153,36 @@ def main() -> None:
     theatre_events = run_theatre_scrapers()
     print(f"Found {len(theatre_events)} theatre events")
 
+    print("Running culture scrapers...")
+    culture_events = run_culture_scrapers()
+    print(f"Found {len(culture_events)} culture events")
+
     print("Deduplicating events...")
     deduped_music = stage1_dedup(matched_music)
     deduped_music = llm_dedup(deduped_music)
     deduped_theatre = stage1_dedup(theatre_events)
-    print(f"After dedup: {len(deduped_music)} music, {len(deduped_theatre)} theatre")
+    deduped_culture = stage1_dedup(culture_events)
+    print(f"After dedup: {len(deduped_music)} music, {len(deduped_theatre)} theatre, {len(deduped_culture)} culture")
 
     print("Loading previous results...")
     previous_keys = load_previous_events()
 
     new_music = get_new_events(deduped_music, previous_keys)
     new_theatre = get_new_events(deduped_theatre, previous_keys)
-    print(f"New events: {len(new_music)} music, {len(new_theatre)} theatre")
+    new_culture = get_new_events(deduped_culture, previous_keys)
+    print(f"New events: {len(new_music)} music, {len(new_theatre)} theatre, {len(new_culture)} culture")
 
-    if new_music or new_theatre:
+    if new_music or new_theatre or new_culture:
         print("Sending email digest...")
         to_email = os.environ.get("NOTIFY_EMAIL", "")
         if to_email:
-            send_digest(new_music, new_theatre, to_email)
+            send_digest(new_music, new_theatre, new_culture, to_email)
             print("Email sent!")
         else:
             print("NOTIFY_EMAIL not set, skipping email")
 
     print("Saving results...")
-    save_results(deduped_music, deduped_theatre, artists)
+    save_results(deduped_music, deduped_theatre, deduped_culture, artists)
 
     print("Cleaning up old files...")
     cleanup_old_files()

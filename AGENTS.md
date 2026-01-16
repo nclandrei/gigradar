@@ -12,6 +12,7 @@
 - **scrapers/**: Site-specific scrapers returning `list[Event]`
   - `music/`: iabilet, eventbook, control, expirat, quantic, jfr, hardrock
   - `theatre/`: bulandra
+  - `culture/`: arcub
 - **services/**: Shared utilities (http, spotify, dedup, email)
 - **data/**: JSON output files (date-prefixed, 7-day retention)
 - **tmp/**: Test data, screenshots, debug output (gitignored)
