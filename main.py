@@ -10,7 +10,7 @@ from pathlib import Path
 from rapidfuzz import fuzz
 
 from models import Event
-from scrapers.culture import arcub
+from scrapers.culture import arcub, mnac
 from scrapers.music import control, expirat, iabilet, jfr, quantic
 from scrapers.theatre import bulandra
 from services.dedup import llm_dedup, stage1_dedup
@@ -40,7 +40,7 @@ def run_theatre_scrapers() -> list[Event]:
 def run_culture_scrapers() -> list[Event]:
     """Run all culture scrapers and collect events."""
     events: list[Event] = []
-    for scraper in [arcub]:
+    for scraper in [arcub, mnac]:
         events.extend(scraper.scrape())
     return events
 
