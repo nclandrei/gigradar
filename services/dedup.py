@@ -1,5 +1,8 @@
+import json
+import os
 import re
 
+from google import genai
 from rapidfuzz import fuzz
 
 from models import Event
@@ -93,5 +96,63 @@ def stage1_dedup(events: list[Event]) -> list[Event]:
 
 def llm_dedup(events: list[Event]) -> list[Event]:
     """Use LLM to identify remaining duplicates."""
-    # TODO: Implement LLM deduplication with Gemini (gemini-2.5-flash-lite)
-    return events
+    if len(events) < 2:
+        return events
+
+    api_key = os.environ.get("GEMINI_API_KEY")
+    if not api_key:
+        print("GEMINI_API_KEY not set, skipping LLM dedup")
+        return events
+
+    client = genai.Client(api_key=api_key)
+
+    events_data = []
+    for i, e in enumerate(events):
+        events_data.append({
+            "id": i,
+            "title": e.title,
+            "artist": e.artist,
+            "venue": e.venue,
+            "date": e.date.strftime("%Y-%m-%d"),
+            "source": e.source,
+        })
+
+    prompt = f"""You are a duplicate event detector. Given this list of events, identify which ones are duplicates of each other (same concert/show listed on different sources).
+
+Events:
+{json.dumps(events_data, indent=2)}
+
+Return a JSON object with a single key "duplicates" containing a list of lists. Each inner list contains the IDs of events that are duplicates of each other.
+
+Rules:
+- Same artist + same date + same/similar venue = duplicate
+- Different spelling of artist names may still be duplicates (e.g., "The Cure" vs "Cure")
+- Venue variations are common (e.g., "Control Club" vs "Control")
+- If no duplicates found, return {{"duplicates": []}}
+- Only group events if you're confident they're the same event
+
+Return ONLY valid JSON, no explanation."""
+
+    try:
+        response = client.models.generate_content(
+            model="gemini-2.5-flash-lite",
+            contents=prompt,
+        )
+        text = response.text.strip()
+        if text.startswith("```"):
+            text = text.split("\n", 1)[1].rsplit("```", 1)[0].strip()
+
+        result = json.loads(text)
+        duplicate_groups = result.get("duplicates", [])
+
+        ids_to_remove: set[int] = set()
+        for group in duplicate_groups:
+            if len(group) > 1:
+                for dup_id in group[1:]:
+                    ids_to_remove.add(dup_id)
+
+        return [e for i, e in enumerate(events) if i not in ids_to_remove]
+
+    except Exception as e:
+        print(f"LLM dedup failed: {e}")
+        return events
