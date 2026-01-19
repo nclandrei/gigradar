@@ -14,6 +14,7 @@ const sources = {
     { name: "Hard Rock Cafe", url: "https://hardrockcafe.com/location/bucharest" },
     { name: "JFR", url: "https://jfrclub.ro" },
     { name: "Opera Națională București", url: "https://operanb.ro" },
+    { name: "Gărâna Jazz Festival", url: "https://garana-jazz.ro" },
     { name: "iaBilet", url: "https://www.iabilet.ro" },
     { name: "Eventbook", url: "https://eventbook.ro" },
   ],
