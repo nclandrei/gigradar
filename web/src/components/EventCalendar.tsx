@@ -16,20 +16,35 @@ export function EventCalendar({
   selectedDate,
   onSelectDate,
 }: EventCalendarProps) {
-  const eventDates = useMemo(() => {
-    const dates = new Set<string>();
+  const eventCountByDate = useMemo(() => {
+    const counts = new Map<string, number>();
     events.forEach((event) => {
-      const date = new Date(event.date);
-      dates.add(date.toDateString());
+      const dateKey = new Date(event.date).toDateString();
+      counts.set(dateKey, (counts.get(dateKey) || 0) + 1);
     });
-    return dates;
+    return counts;
   }, [events]);
 
   const modifiers = useMemo(() => {
     return {
-      hasEvent: (date: Date) => eventDates.has(date.toDateString()),
+      heatLow: (date: Date) => {
+        const count = eventCountByDate.get(date.toDateString()) || 0;
+        return count >= 1 && count <= 3;
+      },
+      heatMedium: (date: Date) => {
+        const count = eventCountByDate.get(date.toDateString()) || 0;
+        return count >= 4 && count <= 7;
+      },
+      heatHigh: (date: Date) => {
+        const count = eventCountByDate.get(date.toDateString()) || 0;
+        return count >= 8 && count <= 12;
+      },
+      heatMax: (date: Date) => {
+        const count = eventCountByDate.get(date.toDateString()) || 0;
+        return count > 12;
+      },
     };
-  }, [eventDates]);
+  }, [eventCountByDate]);
 
   return (
     <div className="flex justify-center">
@@ -41,7 +56,10 @@ export function EventCalendar({
         locale={ro}
         modifiers={modifiers}
         modifiersClassNames={{
-          hasEvent: "relative after:absolute after:bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-1.5 after:h-1.5 after:bg-[#0EA5E9] after:rounded-full",
+          heatLow: "!bg-orange-200 !text-orange-900 hover:!bg-orange-300",
+          heatMedium: "!bg-orange-400 !text-white hover:!bg-orange-500",
+          heatHigh: "!bg-orange-500 !text-white hover:!bg-orange-600",
+          heatMax: "!bg-orange-600 !text-white hover:!bg-orange-700",
         }}
         className="!rounded-base"
       />
