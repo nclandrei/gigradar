@@ -57,7 +57,7 @@ export default function DesprePage() {
         <section className="mb-8">
           <p className="text-lg leading-relaxed mb-4">
             <strong>Cultură la plic</strong> agregă evenimente culturale din București într-un singur loc. 
-            Concerte, spectacole de teatru, expoziții, stand-up — tot ce ai nevoie ca să-ți planifici weekendul.
+            Concerte, spectacole de teatru, expoziții — tot ce ai nevoie ca să-ți planifici weekendul.
           </p>
           <p className="text-lg leading-relaxed">
             Datele sunt colectate automat din sursele de mai jos și actualizate zilnic.
