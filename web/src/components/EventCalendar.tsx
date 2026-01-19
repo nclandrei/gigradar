@@ -36,6 +36,7 @@ export function EventCalendar({
         mode="single"
         selected={selectedDate}
         onSelect={onSelectDate}
+        weekStartsOn={1}
         modifiers={modifiers}
         modifiersClassNames={{
           hasEvent: "relative after:absolute after:bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-1.5 after:h-1.5 after:bg-[#0EA5E9] after:rounded-full",
