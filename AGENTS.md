@@ -24,7 +24,7 @@
 - **services/**: Shared utilities (http, spotify, dedup, email)
 - **data/**: JSON output files (date-prefixed, 7-day retention)
 - **tmp/**: Test data, screenshots, debug output (gitignored)
-- **web/**: Next.js frontend ("Calendarul Hipsterului")
+- **web/**: Next.js frontend ("Cultură la plic")
   - `src/app/`: App router pages and layout
   - `src/components/`: React components (EventCard, EventCalendar, EventList, Header)
   - `src/components/ui/`: neobrutalism.dev UI components
