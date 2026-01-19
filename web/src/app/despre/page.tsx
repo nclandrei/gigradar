@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Logo } from "@/components/Logo";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -39,15 +39,7 @@ export default function DesprePage() {
     <div className="min-h-screen bg-background">
       <header className="border-b-2 border-border bg-secondary-background py-6 px-4">
         <div className="max-w-4xl mx-auto">
-          <Link 
-            href="/" 
-            className="text-2xl md:text-3xl font-bold tracking-tight hover:opacity-80 transition-opacity"
-          >
-            <span className="relative">
-              Cultură la plic
-              <span className="absolute -bottom-0.5 left-0 w-full h-2 bg-culture -z-10 -rotate-1" />
-            </span>
-          </Link>
+          <Logo />
         </div>
       </header>
 
