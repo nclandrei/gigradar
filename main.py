@@ -3,7 +3,6 @@
 
 import json
 import os
-import traceback
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -17,14 +16,11 @@ from scrapers.culture import arcub, mnac
 from scrapers.music import control, enescu, expirat, garana, jazzinthepark, jazzx, jfr, quantic
 from scrapers.theatre import bulandra
 from services.dedup import llm_dedup, stage1_dedup
-from services.email import ScraperError, send_digest, send_scraper_alert
 from services.spotify import search_artist
 
 DATA_DIR = Path(__file__).parent / "data"
 EVENTS_FILE = DATA_DIR / "events.json"
 FESTIVAL_SCRAPERS = {garana, jazzinthepark, jfr}
-
-scraper_errors: list[ScraperError] = []
 
 
 def should_run_festival_scrapers() -> bool:
@@ -38,13 +34,6 @@ def run_scraper_safely(scraper: ModuleType) -> list[Event]:
     try:
         return scraper.scrape()
     except Exception as e:
-        tb = traceback.format_exc()
-        error = ScraperError(
-            scraper_name=scraper_name,
-            error_message=str(e),
-            traceback=tb,
-        )
-        scraper_errors.append(error)
         print(f"⚠️  Scraper '{scraper_name}' failed: {e}")
         return []
 
@@ -245,26 +234,8 @@ def main() -> None:
     new_culture = get_new_events(deduped_culture, previous_keys)
     print(f"New events: {len(new_music)} music, {len(new_theatre)} theatre, {len(new_culture)} culture")
 
-    if new_music or new_theatre or new_culture:
-        print("Sending email digest...")
-        to_email = os.environ.get("NOTIFY_EMAIL", "")
-        if to_email:
-            send_digest(new_music, new_theatre, new_culture, to_email)
-            print("Email sent!")
-        else:
-            print("NOTIFY_EMAIL not set, skipping email")
-
     print("Saving results (merging new events and removing past events)...")
     save_results(deduped_music, deduped_theatre, deduped_culture, existing_events)
-
-    if scraper_errors:
-        print(f"Sending alert for {len(scraper_errors)} failed scraper(s)...")
-        to_email = os.environ.get("NOTIFY_EMAIL", "")
-        if to_email:
-            send_scraper_alert(scraper_errors, to_email)
-            print("Alert sent!")
-        else:
-            print("NOTIFY_EMAIL not set, skipping alert")
 
     print("Done!")
 
