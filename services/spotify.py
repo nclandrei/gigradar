@@ -2,40 +2,47 @@ import os
 
 import httpx
 
+_access_token_cache: dict[str, str] = {}
 
-def refresh_access_token() -> str:
-    """Refresh the Spotify access token using the stored refresh token."""
+
+def get_access_token() -> str:
+    """Get access token using Client Credentials flow (no user login needed)."""
+    if "token" in _access_token_cache:
+        return _access_token_cache["token"]
+    
     response = httpx.post(
         "https://accounts.spotify.com/api/token",
-        data={
-            "grant_type": "refresh_token",
-            "refresh_token": os.environ["SPOTIFY_REFRESH_TOKEN"],
-        },
+        data={"grant_type": "client_credentials"},
         auth=(os.environ["SPOTIFY_CLIENT_ID"], os.environ["SPOTIFY_CLIENT_SECRET"]),
     )
     response.raise_for_status()
-    return response.json()["access_token"]
+    token = response.json()["access_token"]
+    _access_token_cache["token"] = token
+    return token
 
 
-def get_followed_artists() -> list[str]:
-    """Fetch all followed artists from Spotify."""
-    access_token = refresh_access_token()
+def search_artist(artist_name: str) -> str | None:
+    """Search for an artist on Spotify and return their page URL if found."""
+    if not artist_name:
+        return None
+    
+    access_token = get_access_token()
     headers = {"Authorization": f"Bearer {access_token}"}
-
-    artists: list[str] = []
-    url = "https://api.spotify.com/v1/me/following?type=artist&limit=50"
-
-    while url:
-        response = httpx.get(url, headers=headers)
-        response.raise_for_status()
-        data = response.json()
-
-        for artist in data["artists"]["items"]:
-            artists.append(artist["name"])
-
-        url = data["artists"].get("next")
-
-    return artists
+    
+    response = httpx.get(
+        "https://api.spotify.com/v1/search",
+        params={"q": artist_name, "type": "artist", "limit": 1},
+        headers=headers,
+    )
+    response.raise_for_status()
+    data = response.json()
+    
+    artists = data.get("artists", {}).get("items", [])
+    if not artists:
+        return None
+    
+    artist = artists[0]
+    return f"https://open.spotify.com/artist/{artist['id']}"
 
 
 def normalize(name: str) -> str:

@@ -10,4 +10,5 @@ export interface Event {
   category: Category;
   price: string | null;
   spotifyMatch?: boolean;
+  spotifyUrl?: string | null;
 }

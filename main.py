@@ -1,15 +1,13 @@
 #!/usr/bin/env python3
-"""GigRadar: Weekly event aggregator matching Spotify followed artists."""
+"""Cultură la plic: Weekly event aggregator for Bucharest cultural events."""
 
 import json
 import os
 import traceback
-from dataclasses import asdict
+from dataclasses import asdict, replace
 from datetime import datetime, timedelta
 from pathlib import Path
 from types import ModuleType
-
-from rapidfuzz import fuzz
 
 from models import Event
 from scrapers.culture import arcub, mnac
@@ -17,7 +15,7 @@ from scrapers.music import control, enescu, expirat, garana, jazzinthepark, jazz
 from scrapers.theatre import bulandra
 from services.dedup import llm_dedup, stage1_dedup
 from services.email import ScraperError, send_digest, send_scraper_alert
-from services.spotify import get_followed_artists, normalize
+from services.spotify import search_artist
 
 DATA_DIR = Path(__file__).parent / "data"
 RETENTION_DAYS = 7
@@ -80,26 +78,16 @@ def run_culture_scrapers() -> list[Event]:
     return events
 
 
-def match_events(events: list[Event], artists: list[str]) -> list[Event]:
-    """Filter events to those matching followed artists."""
-    artist_set = {normalize(a) for a in artists}
-
-    matched: list[Event] = []
+def enrich_with_spotify(events: list[Event]) -> list[Event]:
+    """Add Spotify URLs to music events where artist is found."""
+    enriched: list[Event] = []
     for event in events:
-        if not event.artist:
-            continue
-
-        normalized_artist = normalize(event.artist)
-        if normalized_artist in artist_set:
-            matched.append(event)
-            continue
-
-        for artist in artist_set:
-            if fuzz.ratio(normalized_artist, artist) > 85:
-                matched.append(event)
-                break
-
-    return matched
+        if event.category == "music" and event.artist:
+            spotify_url = search_artist(event.artist)
+            enriched.append(replace(event, spotify_url=spotify_url))
+        else:
+            enriched.append(event)
+    return enriched
 
 
 def load_previous_events() -> set[str]:
@@ -125,7 +113,6 @@ def save_results(
     music_events: list[Event],
     theatre_events: list[Event],
     culture_events: list[Event],
-    artists: list[str],
 ) -> None:
     """Save results to a date-prefixed JSON file."""
     DATA_DIR.mkdir(exist_ok=True)
@@ -137,7 +124,6 @@ def save_results(
         "music_events": [asdict(e) for e in music_events],
         "theatre_events": [asdict(e) for e in theatre_events],
         "culture_events": [asdict(e) for e in culture_events],
-        "spotify_artists": artists,
     }
 
     with open(filepath, "w") as f:
@@ -172,17 +158,9 @@ def get_new_events(
 
 def main() -> None:
     """Main orchestrator."""
-    print("Fetching Spotify followed artists...")
-    artists = get_followed_artists()
-    print(f"Found {len(artists)} followed artists")
-
     print("Running music scrapers...")
     music_events = run_music_scrapers()
     print(f"Found {len(music_events)} music events")
-
-    print("Matching events to followed artists...")
-    matched_music = match_events(music_events, artists)
-    print(f"Matched {len(matched_music)} events to followed artists")
 
     print("Running theatre scrapers...")
     theatre_events = run_theatre_scrapers()
@@ -193,11 +171,16 @@ def main() -> None:
     print(f"Found {len(culture_events)} culture events")
 
     print("Deduplicating events...")
-    deduped_music = stage1_dedup(matched_music)
+    deduped_music = stage1_dedup(music_events)
     deduped_music = llm_dedup(deduped_music)
     deduped_theatre = stage1_dedup(theatre_events)
     deduped_culture = stage1_dedup(culture_events)
     print(f"After dedup: {len(deduped_music)} music, {len(deduped_theatre)} theatre, {len(deduped_culture)} culture")
+
+    print("Enriching music events with Spotify links...")
+    deduped_music = enrich_with_spotify(deduped_music)
+    spotify_count = sum(1 for e in deduped_music if e.spotify_url)
+    print(f"Found {spotify_count} artists on Spotify")
 
     print("Loading previous results...")
     previous_keys = load_previous_events()
@@ -217,7 +200,7 @@ def main() -> None:
             print("NOTIFY_EMAIL not set, skipping email")
 
     print("Saving results...")
-    save_results(deduped_music, deduped_theatre, deduped_culture, artists)
+    save_results(deduped_music, deduped_theatre, deduped_culture)
 
     print("Cleaning up old files...")
     cleanup_old_files()

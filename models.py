@@ -13,3 +13,4 @@ class Event:
     source: str
     category: Literal["music", "theatre", "culture"]
     price: str | None = None
+    spotify_url: str | None = None
