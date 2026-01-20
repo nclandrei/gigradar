@@ -1,31 +1,68 @@
-"use client";
-
-import { useState, useEffect } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { EventCalendar } from "@/components/EventCalendar";
-import { EventList } from "@/components/EventList";
-import { Event } from "@/types/event";
+import { EventsView } from "@/components/EventsView";
+import { Event, Category } from "@/types/event";
+import { promises as fs } from "fs";
+import path from "path";
 
-export default function Home() {
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
-  const [events, setEvents] = useState<Event[]>([]);
-  const [loading, setLoading] = useState(true);
+interface RawEvent {
+  title: string;
+  artist: string | null;
+  venue: string;
+  date: string;
+  url: string;
+  source: string;
+  category: Category;
+  price: string | null;
+  spotify_url: string | null;
+}
 
-  useEffect(() => {
-    async function fetchEvents() {
-      try {
-        const res = await fetch("/api/events");
-        const data = await res.json();
-        setEvents(data);
-      } catch (error) {
-        console.error("Failed to fetch events:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchEvents();
-  }, []);
+interface EventsData {
+  music_events?: RawEvent[];
+  theatre_events?: RawEvent[];
+  culture_events?: RawEvent[];
+}
+
+async function getEvents(): Promise<Event[]> {
+  const eventsPath = path.join(process.cwd(), "public", "data", "events.json");
+  
+  try {
+    const fileContent = await fs.readFile(eventsPath, "utf-8");
+    const eventsData: EventsData = JSON.parse(fileContent);
+    
+    const rawEvents = [
+      ...(eventsData.music_events || []),
+      ...(eventsData.theatre_events || []),
+      ...(eventsData.culture_events || []),
+    ];
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    let allEvents: Event[] = rawEvents.map((e) => ({
+      title: e.title,
+      artist: e.artist,
+      venue: e.venue,
+      date: e.date,
+      url: e.url,
+      source: e.source,
+      category: e.category,
+      price: e.price,
+      spotifyUrl: e.spotify_url,
+      spotifyMatch: !!e.spotify_url,
+    }));
+
+    allEvents = allEvents.filter((event) => new Date(event.date) >= today);
+    allEvents.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+    return allEvents;
+  } catch {
+    return [];
+  }
+}
+
+export default async function Home() {
+  const events = await getEvents();
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -33,19 +70,7 @@ export default function Home() {
       
       <main className="flex-1 w-full">
         <div className="max-w-4xl mx-auto px-4 py-6">
-        {loading ? (
-          <div className="text-center py-8">Se încarcă evenimentele...</div>
-        ) : (
-          <>
-            <EventCalendar
-              events={events}
-              selectedDate={selectedDate}
-              onSelectDate={setSelectedDate}
-            />
-            
-            <EventList events={events} selectedDate={selectedDate} />
-          </>
-        )}
+          <EventsView events={events} />
         </div>
       </main>
       
