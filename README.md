@@ -1,4 +1,4 @@
-# GigRadar
+# Cultură la plic
 
 Weekly event aggregator that matches upcoming concerts and theatre shows in Bucharest against your Spotify followed artists, then sends you an email digest.
 
