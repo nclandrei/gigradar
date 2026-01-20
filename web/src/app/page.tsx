@@ -6,11 +6,10 @@ import { Footer } from "@/components/Footer";
 import { EventCalendar } from "@/components/EventCalendar";
 import { EventList } from "@/components/EventList";
 import { Event } from "@/types/event";
-import sampleEvents from "@/data/sample-events.json";
 
 export default function Home() {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
-  const events = sampleEvents as Event[];
+  const events: Event[] = [];
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
