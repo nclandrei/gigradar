@@ -37,11 +37,25 @@ export async function GET(request: NextRequest) {
       return NextResponse.json([]);
     }
 
-    let allEvents: Event[] = [
+    const rawEvents = [
       ...(eventsData.music_events || []),
       ...(eventsData.theatre_events || []),
       ...(eventsData.culture_events || []),
     ];
+
+    // Transform snake_case from Python to camelCase for frontend
+    let allEvents: Event[] = rawEvents.map((e: Record<string, unknown>) => ({
+      title: e.title as string,
+      artist: e.artist as string | null,
+      venue: e.venue as string,
+      date: e.date as string,
+      url: e.url as string,
+      source: e.source as string,
+      category: e.category as Category,
+      price: e.price as string | null,
+      spotifyUrl: e.spotify_url as string | null,
+      spotifyMatch: !!e.spotify_url,
+    }));
 
     if (category) {
       allEvents = allEvents.filter((event) => event.category === category);
