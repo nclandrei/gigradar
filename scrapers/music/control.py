@@ -20,14 +20,47 @@ def parse_date_header(header_text: str) -> datetime | None:
 
 
 def extract_artist_from_title(title: str) -> str | None:
-    """Extract artist name from event title."""
-    title = re.sub(r"^LIVE:\s*", "", title)
+    """Extract artist name from event title.
     
-    separators = [" - ", " – ", " | ", " @ ", ": ", " w/ "]
-    for sep in separators:
-        if sep in title:
-            return title.split(sep)[0].strip()
-    return title
+    Control uses patterns like:
+    - "ctrl LIVE: Artist [Country]" -> "Artist [Country]"
+    - "BRUTUS NIGHTS: Artist1, Artist2" -> "Artist1, Artist2"
+    - "ctrl x Something: Artist [Country]" -> "Artist [Country]"
+    - "MidWeek Tapes w/ Artist" -> "Artist"
+    - "aim+wall presents: Artist" -> "Artist"
+    """
+    # Strip cancelled prefix
+    title = re.sub(r"^\[cancelled\]\s*", "", title, flags=re.IGNORECASE)
+    
+    # Known venue/series prefixes that come before the artist
+    prefixes = [
+        r"^ctrl LIVE:\s*",
+        r"^LIVE:\s*",
+        r"^BRUTUS LIVE:\s*",
+        r"^BRUTUS NIGHTS:\s*",
+        r"^ctrl x [^:]+:\s*",  # "ctrl x Techno Diatom: Artist"
+        r"^[^:]+presents:\s*",  # "aim+wall presents: Artist"
+    ]
+    
+    for prefix in prefixes:
+        title = re.sub(prefix, "", title, flags=re.IGNORECASE)
+    
+    # Handle "w/" - artist comes after
+    if " w/ " in title:
+        parts = title.split(" w/ ", 1)
+        # If the part before w/ looks like a series name, take after
+        before = parts[0].strip()
+        after = parts[1].strip()
+        if any(kw in before.lower() for kw in ["tapes", "jam", "presents", "night"]):
+            return after
+        # Otherwise it's "Artist1 w/ Artist2" - keep both
+        return title
+    
+    # Remove tour/album info suffixes
+    title = re.sub(r"\s*-\s*(First|Second|Third)\s+Show$", "", title, flags=re.IGNORECASE)
+    title = re.sub(r"\s*-\s*.*Tour$", "", title, flags=re.IGNORECASE)
+    
+    return title.strip() if title.strip() else None
 
 
 def parse_price(event_div: BeautifulSoup) -> str | None:
