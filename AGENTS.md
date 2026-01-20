@@ -1,13 +1,16 @@
 # AGENTS.md
 
 ## Commands
-- **Run**: `python main.py`
-- **Install deps**: `pip install -r requirements.txt`
-- **Playwright setup**: `playwright install chromium`
-- **Unit tests**: `pytest tests/`
-- **Integration test**: `python scripts/test_full_flow.py`
-- **Integration test + alert**: `python scripts/test_full_flow.py --alert`
-- **Test alert only**: `python scripts/test_full_flow.py --alert-only`
+- **Run**: `python3 main.py`
+- **Install deps**: `pip3 install -r requirements.txt`
+- **Playwright setup**: `python3 -m playwright install chromium`
+- **Unit tests**: `python3 -m pytest tests/`
+- **Integration test**: `python3 scripts/test_full_flow.py`
+- **Integration test + alert**: `python3 scripts/test_full_flow.py --alert`
+- **Test alert only**: `python3 scripts/test_full_flow.py --alert-only`
+- **Test single scraper**: `python3 -c "from scrapers.music.foo import scrape; print(scrape())"`
+
+**Note**: Always use `python3` not `python` - no virtualenv is activated by default.
 
 ### Web (Next.js)
 - **Dev server**: `cd web && pnpm dev`
@@ -18,7 +21,7 @@
 - **main.py**: Orchestrator - runs scrapers, matches artists, deduplicates, sends emails
 - **models.py**: `Event` dataclass (title, artist, venue, date, url, source, category, price)
 - **scrapers/**: Site-specific scrapers returning `list[Event]`
-  - `music/`: iabilet, eventbook, control, expirat, quantic, jfr, hardrock
+  - `music/`: iabilet, eventbook, control, expirat, quantic, jfr, hardrock, ateneul
   - `theatre/`: bulandra
   - `culture/`: arcub
 - **services/**: Shared utilities (http, spotify, dedup, email)
