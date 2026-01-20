@@ -50,7 +50,7 @@ def parse_price(event_div: BeautifulSoup) -> str | None:
     desc_text = desc_elem.get_text(strip=True)
     
     if "free" in desc_text.lower():
-        return "Free"
+        return "Gratis"
     
     price_match = re.search(r"(\d+)\s*lei", desc_text, re.IGNORECASE)
     if price_match:

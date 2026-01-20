@@ -19,6 +19,19 @@ def parse_date_header(header_text: str) -> datetime | None:
         return None
 
 
+def parse_event_time(event_div: BeautifulSoup) -> tuple[int, int] | None:
+    """Extract time from event card's .hour span, returns (hour, minute) or None."""
+    hour_elem = event_div.select_one(".hour")
+    if not hour_elem:
+        return None
+    
+    hour_text = hour_elem.get_text(strip=True)
+    time_match = re.match(r"(\d{1,2}):(\d{2})", hour_text)
+    if time_match:
+        return int(time_match.group(1)), int(time_match.group(2))
+    return None
+
+
 def extract_artist_from_title(title: str) -> str | None:
     """Extract artist name from event title.
     
@@ -77,7 +90,7 @@ def parse_price(event_div: BeautifulSoup) -> str | None:
     if event_div.select_one(".tag.black"):
         tag_text = event_div.select_one(".tag.black").get_text(strip=True)
         if "FREE" in tag_text.upper():
-            return "Free"
+            return "Gratis"
         if "DOOR" in tag_text.upper():
             return "Door ticket"
     
@@ -98,11 +111,17 @@ def parse_event(event_div: BeautifulSoup, event_date: datetime, room: str) -> Ev
     price = parse_price(event_div)
     venue = f"Control Club - {room}"
     
+    event_time = parse_event_time(event_div)
+    if event_time:
+        event_datetime = event_date.replace(hour=event_time[0], minute=event_time[1])
+    else:
+        event_datetime = event_date
+    
     return Event(
         title=title,
         artist=artist,
         venue=venue,
-        date=event_date,
+        date=event_datetime,
         url=url,
         source="control",
         category="music",

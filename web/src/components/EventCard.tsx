@@ -18,10 +18,13 @@ interface EventCardProps {
 
 export function EventCard({ event }: EventCardProps) {
   const eventDate = new Date(event.date);
-  const timeString = eventDate.toLocaleTimeString("ro-RO", {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+  const hasTime = eventDate.getHours() !== 0 || eventDate.getMinutes() !== 0;
+  const timeString = hasTime
+    ? eventDate.toLocaleTimeString("ro-RO", {
+        hour: "2-digit",
+        minute: "2-digit",
+      })
+    : null;
 
   return (
     <a
@@ -69,18 +72,14 @@ export function EventCard({ event }: EventCardProps) {
           )}
           
           <p className="text-sm font-medium">
-            {event.venue} • {timeString}
+            {event.venue}{timeString && ` • ${timeString}`}
           </p>
         </div>
         
         <div className="text-right shrink-0">
-          {event.price ? (
+          {event.price && (
             <span className="inline-block bg-main px-2 py-1 text-sm font-bold rounded-base border-2 border-border">
               {event.price}
-            </span>
-          ) : (
-            <span className="inline-block bg-main px-2 py-1 text-sm font-bold rounded-base border-2 border-border">
-              Gratis
             </span>
           )}
         </div>

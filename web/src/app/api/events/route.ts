@@ -3,10 +3,22 @@ import { promises as fs } from "fs";
 import path from "path";
 import type { Event, Category } from "@/types/event";
 
+interface RawEvent {
+  title: string;
+  artist: string | null;
+  venue: string;
+  date: string;
+  url: string;
+  source: string;
+  category: Category;
+  price: string | null;
+  spotify_url: string | null;
+}
+
 interface EventsData {
-  music_events?: Event[];
-  theatre_events?: Event[];
-  culture_events?: Event[];
+  music_events?: RawEvent[];
+  theatre_events?: RawEvent[];
+  culture_events?: RawEvent[];
 }
 
 export async function GET(request: NextRequest) {
@@ -44,7 +56,7 @@ export async function GET(request: NextRequest) {
     ];
 
     // Transform snake_case from Python to camelCase for frontend
-    let allEvents: Event[] = rawEvents.map((e: Record<string, unknown>) => ({
+    let allEvents: Event[] = rawEvents.map((e) => ({
       title: e.title as string,
       artist: e.artist as string | null,
       venue: e.venue as string,
