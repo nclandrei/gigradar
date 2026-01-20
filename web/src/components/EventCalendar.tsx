@@ -5,6 +5,14 @@ import { Event } from "@/types/event";
 import { ro } from "date-fns/locale";
 import { useMemo } from "react";
 
+function getDateKey(dateStr: string): string {
+  return dateStr.split("T")[0];
+}
+
+function dateToKey(date: Date): string {
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+}
+
 interface EventCalendarProps {
   events: Event[];
   selectedDate: Date | undefined;
@@ -19,7 +27,7 @@ export function EventCalendar({
   const eventCountByDate = useMemo(() => {
     const counts = new Map<string, number>();
     events.forEach((event) => {
-      const dateKey = new Date(event.date).toDateString();
+      const dateKey = getDateKey(event.date);
       counts.set(dateKey, (counts.get(dateKey) || 0) + 1);
     });
     return counts;
@@ -28,19 +36,19 @@ export function EventCalendar({
   const modifiers = useMemo(() => {
     return {
       heatLow: (date: Date) => {
-        const count = eventCountByDate.get(date.toDateString()) || 0;
+        const count = eventCountByDate.get(dateToKey(date)) || 0;
         return count >= 1 && count <= 3;
       },
       heatMedium: (date: Date) => {
-        const count = eventCountByDate.get(date.toDateString()) || 0;
+        const count = eventCountByDate.get(dateToKey(date)) || 0;
         return count >= 4 && count <= 7;
       },
       heatHigh: (date: Date) => {
-        const count = eventCountByDate.get(date.toDateString()) || 0;
+        const count = eventCountByDate.get(dateToKey(date)) || 0;
         return count >= 8 && count <= 12;
       },
       heatMax: (date: Date) => {
-        const count = eventCountByDate.get(date.toDateString()) || 0;
+        const count = eventCountByDate.get(dateToKey(date)) || 0;
         return count > 12;
       },
     };
