@@ -16,16 +16,15 @@ interface EventCardProps {
   event: Event;
 }
 
-function extractTime(dateStr: string): string | null {
-  const match = dateStr.match(/T(\d{2}):(\d{2})/);
-  if (!match) return null;
-  const [, hours, minutes] = match;
-  if (hours === "00" && minutes === "00") return null;
-  return `${hours}:${minutes}`;
-}
-
 export function EventCard({ event }: EventCardProps) {
-  const timeString = extractTime(event.date);
+  const eventDate = new Date(event.date);
+  const hasTime = eventDate.getHours() !== 0 || eventDate.getMinutes() !== 0;
+  const timeString = hasTime
+    ? eventDate.toLocaleTimeString("ro-RO", {
+        hour: "2-digit",
+        minute: "2-digit",
+      })
+    : null;
 
   return (
     <a

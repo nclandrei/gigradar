@@ -3,16 +3,6 @@
 import { Event } from "@/types/event";
 import { EventCard } from "./EventCard";
 import { useMemo } from "react";
-import { format } from "date-fns";
-import { ro } from "date-fns/locale";
-
-function getDateKey(dateStr: string): string {
-  return dateStr.split("T")[0];
-}
-
-function dateToKey(date: Date): string {
-  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
-}
 
 interface EventListProps {
   events: Event[];
@@ -22,13 +12,20 @@ interface EventListProps {
 export function EventList({ events, selectedDate }: EventListProps) {
   const filteredEvents = useMemo(() => {
     if (!selectedDate) return [];
-    const selectedKey = dateToKey(selectedDate);
     
-    return events.filter((event) => getDateKey(event.date) === selectedKey);
+    return events.filter((event) => {
+      const eventDate = new Date(event.date);
+      return eventDate.toDateString() === selectedDate.toDateString();
+    });
   }, [events, selectedDate]);
 
   const formattedDate = selectedDate
-    ? format(selectedDate, "EEEE, d MMMM yyyy", { locale: ro })
+    ? selectedDate.toLocaleDateString("ro-RO", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      })
     : "";
 
   return (
