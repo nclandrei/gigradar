@@ -21,8 +21,14 @@ from services.spotify import get_followed_artists, normalize
 
 DATA_DIR = Path(__file__).parent / "data"
 RETENTION_DAYS = 7
+FESTIVAL_SCRAPERS = {garana, jazzinthepark, jfr}
 
 scraper_errors: list[ScraperError] = []
+
+
+def should_run_festival_scrapers() -> bool:
+    """Run festival scrapers only on the 1st of each month (annual events don't change often)."""
+    return datetime.now().day == 1
 
 
 def run_scraper_safely(scraper: ModuleType) -> list[Event]:
@@ -45,8 +51,16 @@ def run_scraper_safely(scraper: ModuleType) -> list[Event]:
 def run_music_scrapers() -> list[Event]:
     """Run all music scrapers and collect events."""
     events: list[Event] = []
-    for scraper in [control, enescu, expirat, quantic, jfr, garana, jazzinthepark, jazzx]:
+    all_scrapers = [control, enescu, expirat, quantic, jfr, garana, jazzinthepark, jazzx]
+    run_festivals = should_run_festival_scrapers()
+    
+    for scraper in all_scrapers:
+        if scraper in FESTIVAL_SCRAPERS and not run_festivals:
+            continue
         events.extend(run_scraper_safely(scraper))
+    
+    if not run_festivals:
+        print("  (skipping festival scrapers - only run on 1st of month)")
     return events
 
 
