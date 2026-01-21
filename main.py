@@ -16,6 +16,7 @@ from scrapers.culture import arcub, mnac
 from scrapers.music import control, enescu, expirat, garana, jazzinthepark, jazzx, jfr, quantic
 from scrapers.theatre import bulandra
 from services.dedup import llm_dedup, stage1_dedup
+from services.enrichment import enrich_events
 from services.spotify import search_artist
 
 DATA_DIR = Path(__file__).parent / "web" / "public" / "data"
@@ -228,6 +229,13 @@ def main() -> None:
     deduped_music = enrich_with_spotify(deduped_music)
     spotify_count = sum(1 for e in deduped_music if e.spotify_url)
     print(f"Found {spotify_count} artists on Spotify")
+
+    print("Enriching theatre/culture events with details...")
+    deduped_theatre = enrich_events(deduped_theatre)
+    deduped_culture = enrich_events(deduped_culture)
+    theatre_enriched = sum(1 for e in deduped_theatre if e.description or e.image_url)
+    culture_enriched = sum(1 for e in deduped_culture if e.description or e.image_url)
+    print(f"Enriched {theatre_enriched} theatre, {culture_enriched} culture events")
 
     new_music = get_new_events(deduped_music, previous_keys)
     new_theatre = get_new_events(deduped_theatre, previous_keys)

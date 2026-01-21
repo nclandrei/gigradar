@@ -13,6 +13,10 @@ interface RawEvent {
   category: Category;
   price: string | null;
   spotify_url: string | null;
+  description?: string | null;
+  description_source?: "scraped" | "ai" | null;
+  image_url?: string | null;
+  video_url?: string | null;
 }
 
 interface EventsData {
@@ -67,6 +71,10 @@ export async function GET(request: NextRequest) {
       price: e.price as string | null,
       spotifyUrl: e.spotify_url as string | null,
       spotifyMatch: !!e.spotify_url,
+      description: e.description,
+      descriptionSource: e.description_source,
+      imageUrl: e.image_url,
+      videoUrl: e.video_url,
     }));
 
     if (category) {
