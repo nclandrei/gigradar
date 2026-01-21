@@ -32,6 +32,7 @@ const sources = {
   culture: [
     { name: "ARCUB", url: "https://arcub.ro" },
     { name: "Improteca", url: "https://improteca.ro" },
+    { name: "MARe", url: "https://mare.ro" },
     { name: "MNAC", url: "https://mnac.ro" },
   ],
 };
