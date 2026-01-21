@@ -1,17 +1,6 @@
 {
-  "scraped_at": "2026-01-20T20:53:04.328260",
+  "scraped_at": "2026-01-21T17:54:23.523084",
   "music_events": [
-    {
-      "title": "BRUTUS NIGHTS: Walentin Pauer & Nek, Drago\u0219 Rusu & Nitchji Oh Szperantza",
-      "artist": "Walentin Pauer & Nek, Drago\u0219 Rusu & Nitchji Oh Szperantza",
-      "venue": "Control Club - ROOM 1 & ROOM 2",
-      "date": "2026-01-20 22:00:00",
-      "url": "https://www.control-club.ro/event/?slug=brutus-nights-walentin-pauer-nek-drago%C8%99-rusu-nitchji-oh-szperantza",
-      "source": "control",
-      "category": "music",
-      "price": "30.00 lei",
-      "spotify_url": "https://open.spotify.com/artist/0A9NlTa240Nk1XXWIat8Na"
-    },
     {
       "title": "MidWeek Tapes w/ Iulian Morar",
       "artist": "Iulian Morar",
@@ -21,7 +10,11 @@
       "source": "control",
       "category": "music",
       "price": "Gratis",
-      "spotify_url": null
+      "spotify_url": null,
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "LIVE: Robin and the Backstabbers [RO]",
@@ -32,7 +25,11 @@
       "source": "control",
       "category": "music",
       "price": null,
-      "spotify_url": "https://open.spotify.com/artist/7y2DXdRackYULQq4qsCxpL"
+      "spotify_url": "https://open.spotify.com/artist/7y2DXdRackYULQq4qsCxpL",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "aim+wall presents: Piezo [IT], Zohar [NL]",
@@ -43,7 +40,26 @@
       "source": "control",
       "category": "music",
       "price": "30.00 lei",
-      "spotify_url": "https://open.spotify.com/artist/4vr49Ycb253qEyUuXnlYaM"
+      "spotify_url": "https://open.spotify.com/artist/4vr49Ycb253qEyUuXnlYaM",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
+    },
+    {
+      "title": "B0b & Seif Gzara",
+      "artist": "B0b & Seif Gzara",
+      "venue": "Control Club - ROOM 2",
+      "date": "2026-01-22 22:00:00",
+      "url": "https://www.control-club.ro/event/?slug=b0b-seif-gzara",
+      "source": "control",
+      "category": "music",
+      "price": "30.00 lei",
+      "spotify_url": "https://open.spotify.com/artist/4DcW0kBn3K3FHD5kSBPBt1",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "ctrl x Techno Diatom: Specific Objects [DE], HIGHLIMITER [GE], Michael Ius, New Disorder",
@@ -54,7 +70,11 @@
       "source": "control",
       "category": "music",
       "price": "40.00 lei",
-      "spotify_url": "https://open.spotify.com/artist/7425mj2jeNAJgnEOsXa8bF"
+      "spotify_url": "https://open.spotify.com/artist/7425mj2jeNAJgnEOsXa8bF",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "LIVE: PLANT (Album Launch), Orange Peel Her, Coridor Apt.",
@@ -65,7 +85,11 @@
       "source": "control",
       "category": "music",
       "price": "70.00 lei",
-      "spotify_url": "https://open.spotify.com/artist/64jWj93nUv8iRP0ASZ58pj"
+      "spotify_url": "https://open.spotify.com/artist/64jWj93nUv8iRP0ASZ58pj",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "Timo Maas [DE], Victor Stancov, Ground Control w/ Leo",
@@ -76,7 +100,11 @@
       "source": "control",
       "category": "music",
       "price": "40.00 lei",
-      "spotify_url": "https://open.spotify.com/artist/1nN9sUUgtCl0Z9ciCLc48Q"
+      "spotify_url": "https://open.spotify.com/artist/1nN9sUUgtCl0Z9ciCLc48Q",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "Casual Chess by Peono Chess Club",
@@ -87,7 +115,11 @@
       "source": "control",
       "category": "music",
       "price": "Gratis",
-      "spotify_url": null
+      "spotify_url": null,
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "BRUTUS LIVE: Truthday x Cristina Dicianu",
@@ -98,7 +130,26 @@
       "source": "control",
       "category": "music",
       "price": "30.00 lei",
-      "spotify_url": "https://open.spotify.com/artist/6O0fhT6Srut74nz4j85ypF"
+      "spotify_url": "https://open.spotify.com/artist/6O0fhT6Srut74nz4j85ypF",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
+    },
+    {
+      "title": "Stray Lights Showcase: Bluebell Creeper & Jahmolxes",
+      "artist": "Stray Lights Showcase: Bluebell Creeper & Jahmolxes",
+      "venue": "Control Club - ROOM 1",
+      "date": "2026-01-28 19:00:00",
+      "url": "https://www.control-club.ro/event/?slug=stray-lights-showcase-bluebell-creeper-jahmolxes",
+      "source": "control",
+      "category": "music",
+      "price": null,
+      "spotify_url": "https://open.spotify.com/artist/6N8Z50uTtcsjhM6a3GH9c9",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "MidWeek Tapes w/ Iulian Morar",
@@ -109,7 +160,11 @@
       "source": "control",
       "category": "music",
       "price": "Gratis",
-      "spotify_url": null
+      "spotify_url": null,
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "LIVE: Stella Rose [US]",
@@ -120,7 +175,11 @@
       "source": "control",
       "category": "music",
       "price": null,
-      "spotify_url": "https://open.spotify.com/artist/0eyxFsS9zM2y0l4yuuNm8P"
+      "spotify_url": "https://open.spotify.com/artist/0eyxFsS9zM2y0l4yuuNm8P",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "ctrl x inTension: Mislaw [PL], Michael Ius, Sabre [PL], Rust [PL], Carmen",
@@ -131,7 +190,11 @@
       "source": "control",
       "category": "music",
       "price": "40.00 lei",
-      "spotify_url": "https://open.spotify.com/artist/1Ahtz0gmRMEoWRcuoQR1AK"
+      "spotify_url": "https://open.spotify.com/artist/1Ahtz0gmRMEoWRcuoQR1AK",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "LIVE: Jurjak [RO]",
@@ -142,7 +205,11 @@
       "source": "control",
       "category": "music",
       "price": null,
-      "spotify_url": "https://open.spotify.com/artist/1I4LbpsQvyH3eDSnBiGRzB"
+      "spotify_url": "https://open.spotify.com/artist/1I4LbpsQvyH3eDSnBiGRzB",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "ctrl LIVE: Shkoon [DE/SYR]",
@@ -153,7 +220,11 @@
       "source": "control",
       "category": "music",
       "price": "65.00 lei",
-      "spotify_url": "https://open.spotify.com/artist/3CdsJ9u53uPu3dScKypLVv"
+      "spotify_url": "https://open.spotify.com/artist/3CdsJ9u53uPu3dScKypLVv",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "ctrl x Riddim Bandits Sound System presents: Nomadix [UK], Jonah Dan [UK], Stepper\u2019One [FR], Bass Healing Hi-Fi [BG-RO]",
@@ -164,7 +235,11 @@
       "source": "control",
       "category": "music",
       "price": "40.00 lei",
-      "spotify_url": "https://open.spotify.com/artist/0PQrdRrq5TuLzo18GaWjw7"
+      "spotify_url": "https://open.spotify.com/artist/0PQrdRrq5TuLzo18GaWjw7",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "ctrl LIVE: Vega Trails [UK]",
@@ -175,7 +250,11 @@
       "source": "control",
       "category": "music",
       "price": "from 70 lei",
-      "spotify_url": "https://open.spotify.com/artist/0gbsttCxz1wkYMjN64WCgR"
+      "spotify_url": "https://open.spotify.com/artist/0gbsttCxz1wkYMjN64WCgR",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "ctrl LIVE: Mint Field [MX] & Avishag Cohen Rodrigues [USA]",
@@ -186,7 +265,26 @@
       "source": "control",
       "category": "music",
       "price": "70.00 lei",
-      "spotify_url": "https://open.spotify.com/artist/3okJi6oq87Mwx0VzywmMgz"
+      "spotify_url": "https://open.spotify.com/artist/3okJi6oq87Mwx0VzywmMgz",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
+    },
+    {
+      "title": "LIVE: Cojo [RO]",
+      "artist": "Cojo [RO]",
+      "venue": "Control Club - ROOM 1",
+      "date": "2026-02-19 19:00:00",
+      "url": "https://www.control-club.ro/event/?slug=live-cojo-ro",
+      "source": "control",
+      "category": "music",
+      "price": null,
+      "spotify_url": "https://open.spotify.com/artist/4Rl9vpUbiQ7h02NfIaAma2",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "ctrl x Apricots\u2019 Jam w/ Amaliah [UK], Alexandra, Long",
@@ -197,7 +295,11 @@
       "source": "control",
       "category": "music",
       "price": "40.00 lei",
-      "spotify_url": "https://open.spotify.com/artist/5AAsEhGqZPvRhe423mdfN9"
+      "spotify_url": "https://open.spotify.com/artist/5AAsEhGqZPvRhe423mdfN9",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "ctrl LIVE: Elf Traps [UK]",
@@ -208,7 +310,11 @@
       "source": "control",
       "category": "music",
       "price": "50.00 lei",
-      "spotify_url": "https://open.spotify.com/artist/5McWILAKZbugdGfO8MOKIP"
+      "spotify_url": "https://open.spotify.com/artist/5McWILAKZbugdGfO8MOKIP",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "MARR\u00d8N [NL]",
@@ -219,7 +325,11 @@
       "source": "control",
       "category": "music",
       "price": "40.00 lei",
-      "spotify_url": null
+      "spotify_url": null,
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "ctrl LIVE: A.A. Williams[UK]",
@@ -230,7 +340,11 @@
       "source": "control",
       "category": "music",
       "price": "75.00 lei",
-      "spotify_url": null
+      "spotify_url": null,
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "ADIEL [IT]",
@@ -241,7 +355,11 @@
       "source": "control",
       "category": "music",
       "price": "40.00 lei",
-      "spotify_url": "https://open.spotify.com/artist/1yetl1fEx0mE16k164jXvw"
+      "spotify_url": "https://open.spotify.com/artist/1yetl1fEx0mE16k164jXvw",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "ctrl LIVE: Stavroz [BE]",
@@ -252,7 +370,11 @@
       "source": "control",
       "category": "music",
       "price": "75.00 lei",
-      "spotify_url": "https://open.spotify.com/artist/7su1fG75ZwXHA6ei9Zcy7T"
+      "spotify_url": "https://open.spotify.com/artist/7su1fG75ZwXHA6ei9Zcy7T",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "[cancelled] ctrl LIVE: The Young Gods [CH]",
@@ -263,7 +385,11 @@
       "source": "control",
       "category": "music",
       "price": "75.00 lei",
-      "spotify_url": "https://open.spotify.com/artist/1xF9B1eiCKUejBnEE9k3sY"
+      "spotify_url": "https://open.spotify.com/artist/1xF9B1eiCKUejBnEE9k3sY",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "ctrl LIVE: Humour [UK]",
@@ -274,7 +400,11 @@
       "source": "control",
       "category": "music",
       "price": "60.00 lei",
-      "spotify_url": "https://open.spotify.com/artist/5ErUNpyxSBAdjZaKlefsUr"
+      "spotify_url": "https://open.spotify.com/artist/5ErUNpyxSBAdjZaKlefsUr",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "ctrl LIVE: Lebanon Hanover [CH/UK] - First Show",
@@ -285,7 +415,11 @@
       "source": "control",
       "category": "music",
       "price": "90.00 lei",
-      "spotify_url": "https://open.spotify.com/artist/6w8h2uD28BEdg7bX4k3Lh7"
+      "spotify_url": "https://open.spotify.com/artist/6w8h2uD28BEdg7bX4k3Lh7",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "ctrl LIVE: Lebanon Hanover [CH/UK] - Second Show",
@@ -296,7 +430,11 @@
       "source": "control",
       "category": "music",
       "price": "90.00 lei",
-      "spotify_url": "https://open.spotify.com/artist/6w8h2uD28BEdg7bX4k3Lh7"
+      "spotify_url": "https://open.spotify.com/artist/6w8h2uD28BEdg7bX4k3Lh7",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "ctrl LIVE: IAMX (UK) - Artificial Innocence Tour",
@@ -307,7 +445,11 @@
       "source": "control",
       "category": "music",
       "price": "150.00 lei",
-      "spotify_url": "https://open.spotify.com/artist/223iUzG0kb5V166FJP9ovD"
+      "spotify_url": "https://open.spotify.com/artist/223iUzG0kb5V166FJP9ovD",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "LIVE: Barrens [SE] & Am Fost La Munte Si Mi-a Placut [RO]",
@@ -318,7 +460,11 @@
       "source": "control",
       "category": "music",
       "price": "65.00 lei",
-      "spotify_url": "https://open.spotify.com/artist/00Gmz0du1HDnRUT33VM3yV"
+      "spotify_url": "https://open.spotify.com/artist/00Gmz0du1HDnRUT33VM3yV",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "ctrl LIVE: Deki Alem [SE], Andradonna [DE/RO]",
@@ -329,7 +475,11 @@
       "source": "control",
       "category": "music",
       "price": "from 75 lei",
-      "spotify_url": "https://open.spotify.com/artist/2AK3F4tVjxYuqSGefozy52"
+      "spotify_url": "https://open.spotify.com/artist/2AK3F4tVjxYuqSGefozy52",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "ctrl LIVE: Antony Szmierek [UK]",
@@ -340,7 +490,11 @@
       "source": "control",
       "category": "music",
       "price": "75.00 lei",
-      "spotify_url": "https://open.spotify.com/artist/1odn2oz1bEsGWugQ8W3zhn"
+      "spotify_url": "https://open.spotify.com/artist/1odn2oz1bEsGWugQ8W3zhn",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "ctrl LIVE: A Place to Bury Strangers [USA], Kontravoid [CA/US]",
@@ -351,7 +505,11 @@
       "source": "control",
       "category": "music",
       "price": "65.00 lei",
-      "spotify_url": "https://open.spotify.com/artist/3kx1S2P2Qq3a9bG4DGsAjR"
+      "spotify_url": "https://open.spotify.com/artist/3kx1S2P2Qq3a9bG4DGsAjR",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "ctrl LIVE: Tramhaus [NL]",
@@ -362,7 +520,11 @@
       "source": "control",
       "category": "music",
       "price": "175973 lei",
-      "spotify_url": "https://open.spotify.com/artist/5HXrUfoDwofY8lehLNIykB"
+      "spotify_url": "https://open.spotify.com/artist/5HXrUfoDwofY8lehLNIykB",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "ctrl LIVE: Black Country, New Road [UK]",
@@ -372,8 +534,12 @@
       "url": "https://www.control-club.ro/event/?slug=ctrl-live-black-country-new-road-uk",
       "source": "control",
       "category": "music",
-      "price": "90.00 lei",
-      "spotify_url": "https://open.spotify.com/artist/5GV4deyvGHa9BabXxngOqH"
+      "price": "120.00 lei",
+      "spotify_url": "https://open.spotify.com/artist/5GV4deyvGHa9BabXxngOqH",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "ctrl LIVE: Svaneborg Kardyb [DK]",
@@ -384,7 +550,11 @@
       "source": "control",
       "category": "music",
       "price": "65.00 lei",
-      "spotify_url": "https://open.spotify.com/artist/2aGCFk3Mvhs9Am7JHwoyRr"
+      "spotify_url": "https://open.spotify.com/artist/2aGCFk3Mvhs9Am7JHwoyRr",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "ctrl LIVE: Holy Fuck [CA]",
@@ -395,7 +565,26 @@
       "source": "control",
       "category": "music",
       "price": "75.00 lei",
-      "spotify_url": "https://open.spotify.com/artist/6Q0gMZJNIebNFFaJeonc11"
+      "spotify_url": "https://open.spotify.com/artist/6Q0gMZJNIebNFFaJeonc11",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
+    },
+    {
+      "title": "LIVE: The Notwist [DE]",
+      "artist": "The Notwist [DE]",
+      "venue": "Control Club - ROOM 1",
+      "date": "2026-11-21 20:00:00",
+      "url": "https://www.control-club.ro/event/?slug=live-the-notwist-de",
+      "source": "control",
+      "category": "music",
+      "price": null,
+      "spotify_url": "https://open.spotify.com/artist/1o4xLcugkCtDDOw7POAMha",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "WE ARE THE UNDERGROUND \u2013 2026",
@@ -406,7 +595,11 @@
       "source": "quantic",
       "category": "music",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "LEPROUS",
@@ -417,7 +610,11 @@
       "source": "quantic",
       "category": "music",
       "price": null,
-      "spotify_url": "https://open.spotify.com/artist/4lgrzShsg2FLA89UM2fdO5"
+      "spotify_url": "https://open.spotify.com/artist/4lgrzShsg2FLA89UM2fdO5",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "Concert Taxi, Odyssey si Iarmarock D.P.",
@@ -428,7 +625,11 @@
       "source": "quantic",
       "category": "music",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "Dirty Shirt \u2013 Dirtylicious Decade Tour",
@@ -439,7 +640,11 @@
       "source": "quantic",
       "category": "music",
       "price": null,
-      "spotify_url": "https://open.spotify.com/artist/7lnoKzE5unKzShIzkjlTX7"
+      "spotify_url": "https://open.spotify.com/artist/7lnoKzE5unKzShIzkjlTX7",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "GAEREA | MOROK | WORMGOD | SEVEROTH",
@@ -450,7 +655,11 @@
       "source": "quantic",
       "category": "music",
       "price": null,
-      "spotify_url": "https://open.spotify.com/artist/1wXoI3Ajpv4WwQ3LmcrSBw"
+      "spotify_url": "https://open.spotify.com/artist/1wXoI3Ajpv4WwQ3LmcrSBw",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "Madmans Esprit \u2013 Severed Hopes",
@@ -461,7 +670,11 @@
       "source": "quantic",
       "category": "music",
       "price": null,
-      "spotify_url": "https://open.spotify.com/artist/51oYQ3ekwc7sexxQPIP03j"
+      "spotify_url": "https://open.spotify.com/artist/51oYQ3ekwc7sexxQPIP03j",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "W3 4R3 NUM83R5 | CRIZE",
@@ -472,7 +685,11 @@
       "source": "quantic",
       "category": "music",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "Punk Apocalypse Festival",
@@ -483,7 +700,11 @@
       "source": "quantic",
       "category": "music",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "Noisebreak @ CHAPTER XV",
@@ -494,7 +715,11 @@
       "source": "quantic",
       "category": "music",
       "price": null,
-      "spotify_url": "https://open.spotify.com/artist/2EiUFCnwVBJ11bHlbwBypw"
+      "spotify_url": "https://open.spotify.com/artist/2EiUFCnwVBJ11bHlbwBypw",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "Monkey3",
@@ -505,7 +730,11 @@
       "source": "quantic",
       "category": "music",
       "price": null,
-      "spotify_url": "https://open.spotify.com/artist/31GFg2x20JkksUlQxN9BMe"
+      "spotify_url": "https://open.spotify.com/artist/31GFg2x20JkksUlQxN9BMe",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "\u021aapinarii \u2013 Anti Valentine\u2019s Day",
@@ -516,7 +745,11 @@
       "source": "quantic",
       "category": "music",
       "price": null,
-      "spotify_url": "https://open.spotify.com/artist/6WqQ027OvsE30yhLWLH87e"
+      "spotify_url": "https://open.spotify.com/artist/6WqQ027OvsE30yhLWLH87e",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "Hybrid Riot Tour \u2013 Emo Reunion | notparamore | Shadows of the Park",
@@ -527,7 +760,11 @@
       "source": "quantic",
       "category": "music",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "Concert VAMA la Quantic",
@@ -538,7 +775,11 @@
       "source": "quantic",
       "category": "music",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "Vita de Vie \u2013 concert pre-aniversar #30 de ani",
@@ -549,7 +790,11 @@
       "source": "quantic",
       "category": "music",
       "price": null,
-      "spotify_url": "https://open.spotify.com/artist/5k3WNPoEUg6Z4YNC0DfVNT"
+      "spotify_url": "https://open.spotify.com/artist/5k3WNPoEUg6Z4YNC0DfVNT",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "Cargo",
@@ -560,7 +805,11 @@
       "source": "quantic",
       "category": "music",
       "price": null,
-      "spotify_url": "https://open.spotify.com/artist/511WAmWVOiJXWoFS2V6jGw"
+      "spotify_url": "https://open.spotify.com/artist/511WAmWVOiJXWoFS2V6jGw",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "The Mahones \u2013 35th Anniversary Tour",
@@ -571,7 +820,11 @@
       "source": "quantic",
       "category": "music",
       "price": null,
-      "spotify_url": "https://open.spotify.com/artist/1aTLhV7R5gUjrR60ubjz6V"
+      "spotify_url": "https://open.spotify.com/artist/1aTLhV7R5gUjrR60ubjz6V",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "Moonlight Breakfast",
@@ -582,7 +835,11 @@
       "source": "quantic",
       "category": "music",
       "price": null,
-      "spotify_url": "https://open.spotify.com/artist/1lfKZ5QsMaOjo5UbVmNaqp"
+      "spotify_url": "https://open.spotify.com/artist/1lfKZ5QsMaOjo5UbVmNaqp",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "Ramm-Brand(t) \u2013 Rammstein Tribute",
@@ -593,7 +850,11 @@
       "source": "quantic",
       "category": "music",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "TOOL tribute band H.",
@@ -604,7 +865,11 @@
       "source": "quantic",
       "category": "music",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     },
     {
       "title": "Fara Zahar \u2013 Cantece de crescut iarba",
@@ -615,7 +880,11 @@
       "source": "quantic",
       "category": "music",
       "price": null,
-      "spotify_url": "https://open.spotify.com/artist/73sGfnuU0aoVWa1oXgBxcu"
+      "spotify_url": "https://open.spotify.com/artist/73sGfnuU0aoVWa1oXgBxcu",
+      "description": null,
+      "description_source": null,
+      "image_url": null,
+      "video_url": null
     }
   ],
   "theatre_events": [
@@ -629,9 +898,10 @@
       "category": "theatre",
       "price": null,
       "spotify_url": null,
-      "description": "Un spectacol captivant bazat pe opera lui A.P. Cehov, care explorează natura umană prin prisma comediei și a dramei. O producție remarcabilă care aduce în fața publicului personaje memorabile și situații pline de umor și reflexie.",
-      "description_source": "ai",
-      "image_url": null
+      "description": "Un actor r\u0103mas \u00een teatru doar cu sufleurul \u00ee\u015fi retr\u0103ie\u015fte rolurile \u015fi amintirea succesului. O via\u0163\u0103 tr\u0103it\u0103 \u00eentre r\u00e2s \u015fi pl\u00e2ns, m\u0103rturia unui actor pe scen\u0103 \u015fi \u00een afara scenei sunt subiecte bune pentru o noapte alb\u0103 \u00eendestulat\u0103 cu vodc\u0103 \u015fi bucate iluzorii. Dou\u0103 recitaluri actorice\u015fti care nu trebuie ratate.",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2022/03/Mascariciul-2005-foto-Cosmin-Ardeleanu-09.jpg",
+      "video_url": "https://www.youtube.com/embed/_G2lU_QPd7U"
     },
     {
       "title": "TACHE, IANKE \u0218I CAD\u00c2R",
@@ -642,7 +912,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "Scris\u0103 \u00een 1932, piesaTache, Ianke \u015fi Cad\u00e2ra trecut proba timpului \u015fi a devenit unul dintre cele mai populare \u015fi mai montate texte interbelice din literatura dramatic\u0103 rom\u00e2neasc\u0103. Povestea celor trei mici negustori \u2013 un rom\u00e2n, un evreu \u015fi un turc \u2013 a c\u0103ror tihn\u0103 monoton\u0103 e tulburat\u0103 de o dilem\u0103 de ordin personal, redefine\u015fte rela\u0163iile interetnice \u015fi, \u00een profunzime, cele interumane.Tache, Ianke \u015fi Cad\u00e2rformuleaz\u0103 \u00eentreb\u0103ri \u015fi propune r\u0103spunsuri actuale \u00eentr-o manier\u0103 plin\u0103 de umor, \u00een care sl\u0103b...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2022/04/Tache-Ianke-si-Cadar-2021-foto-Madalina-Sinoae-18.jpg",
+      "video_url": "https://www.youtube.com/embed/4LWtR15M2mA"
     },
     {
       "title": "ROMEO \u0218I JULIETA",
@@ -653,7 +927,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "De peste 400 de ani,Romeo \u0219i Julietar\u0103m\u00e2ne cea mai faimoas\u0103 (\u0219i controversat\u0103) poveste dedragoste a tuturor timpurilor, soarta trist\u0103 a (prea) tinerilor \u00eendr\u0103gosti\u021bi continu\u00e2nd s\u0103 fascineze \u0219iast\u0103zi genera\u021bii \u00eentregi. Pentru prima sa montare la Teatrul Bulandra, regizorul Eugen Gyemantalege s\u0103 redescopere frumuse\u021bea tragic\u0103 a piesei shakespeariene, \u00eentr-un spectacol electrizant,\u00eendr\u0103zne\u021b \u0219i poetic, g\u00e2ndit \u0219i sim\u021bit pentru secolul XXI. Sf\u00e2\u0219iat\u0103 de vrajba f\u0103r\u0103 sf\u00e2r\u0219it dintre rivalele case Capul...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2025/04/Romeo-si-Julieta-2024-foto-Two-Bugs-19-scaled.jpg",
+      "video_url": "https://www.youtube.com/embed/TFHZj7BSwhk?controls=1&rel=0&playsinline=0&cc_load_policy=0&autoplay=0&enablejsapi=1&origin=https%3A%2F%2Fwww.bulandra.ro&widgetid=1&forigin=https%3A%2F%2Fwww.bulandra.ro%2Fromeo-si-julieta%2F&aoriginsup=1&vf=1"
     },
     {
       "title": "...ESCU",
@@ -664,7 +942,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "de Tudor Mu\u0219atescu \u2016 Regia: Alexandru Grecu \u0219i Cristian \u0218ofron \u2016 Distribu\u021bia: Pavel Barto\u0219, Manuela H\u0103r\u0103bor, Crina Matei, C\u0103t\u0103lin Fr\u0103sinescu,\u00a0 Irina C\u0103r\u0103mizaru, Tudor Voicu, Petru \u0218utu, Sorin Aurel Sandu, Anca Pascu, Florentin Munteanu",
+      "description_source": "scraped",
+      "image_url": "https://teatrulstelapopescu.ro/wp-content/uploads/2024/03/Afis-Escu-2025-scaled.jpg",
+      "video_url": "https://www.youtube.com/embed/UUkgXX-r3EI"
     },
     {
       "title": "ROMEO \u0218I JULIETA",
@@ -675,7 +957,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "De peste 400 de ani,Romeo \u0219i Julietar\u0103m\u00e2ne cea mai faimoas\u0103 (\u0219i controversat\u0103) poveste dedragoste a tuturor timpurilor, soarta trist\u0103 a (prea) tinerilor \u00eendr\u0103gosti\u021bi continu\u00e2nd s\u0103 fascineze \u0219iast\u0103zi genera\u021bii \u00eentregi. Pentru prima sa montare la Teatrul Bulandra, regizorul Eugen Gyemantalege s\u0103 redescopere frumuse\u021bea tragic\u0103 a piesei shakespeariene, \u00eentr-un spectacol electrizant,\u00eendr\u0103zne\u021b \u0219i poetic, g\u00e2ndit \u0219i sim\u021bit pentru secolul XXI. Sf\u00e2\u0219iat\u0103 de vrajba f\u0103r\u0103 sf\u00e2r\u0219it dintre rivalele case Capul...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2025/04/Romeo-si-Julieta-2024-foto-Two-Bugs-19-scaled.jpg",
+      "video_url": "https://www.youtube.com/embed/TFHZj7BSwhk?controls=1&rel=0&playsinline=0&cc_load_policy=0&autoplay=0&enablejsapi=1&origin=https%3A%2F%2Fwww.bulandra.ro&widgetid=1&forigin=https%3A%2F%2Fwww.bulandra.ro%2Fromeo-si-julieta%2F&aoriginsup=1&vf=1"
     },
     {
       "title": "PORTUGALIA",
@@ -686,7 +972,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "SpectacolulPortugalia, \u00een regia lui Attila B\u00e9res, redescoper\u0103 piesa lui Zolt\u00e1n Egressy \u2013 un text profund \u0219i plin de umor despre umanitate, \u00een care emo\u021biile mari nu \u00eencap mereu \u00een cele mai cuviincioase cuvinte, \u00een care se vorbe\u0219te \u00eenfocat \u0219i (delicios de) licen\u021bios, dar necurate sunt doar vorbele, nu \u0219i faptele. \u0218i, mai ales, nu inimile. \u00centr-un sat ca oricare altul, din Europa de Est \u0219i de aiurea, c\u00e2rciuma este locul \u00een care se adun\u0103 laolalt\u0103 toate grijile, dorurile, bucuriile \u0219i revoltele, l...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2025/04/Portugalia-2024-foto-Andrei-Gindac-TwoBugs-01-scaled.jpg",
+      "video_url": null
     },
     {
       "title": "V\u00c2N\u0102TOAREA",
@@ -697,7 +987,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "\u00centr-un or\u0103\u0219el nordic desprins parc\u0103 dintr-un album multicolor despre hygge, re\u021beta danez\u0103 a fericirii, comunitatea \u00eenseamn\u0103 familie. Fiecare \u0219tie problemele sau bucuriile celuilalt \u0219i e oric\u00e2nd gata s\u0103-i sar\u0103 \u00een ajutor, m\u0103car cu un sfat \u2013 \u00ee\u0219i petrec weekendurile \u00eempreun\u0103, fac planuri de vacan\u021b\u0103 cu copiii, v\u00e2neaz\u0103 cerbi, s\u0103rb\u0103toresc Festivalul Recoltei \u0219i \u00eencearc\u0103 pe c\u00e2t posibil s\u0103 nu vorbeasc\u0103 despre ce simt cu adev\u0103rat. Via\u021ba nu e (complet) perfect\u0103 nici aici, \u00eens\u0103 atunci c\u00e2nd vecinii \u00ee\u021bi s...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2024/10/Vanatoarea-2024-foto-Andrei-si-Maria-Gindac-TwoBugs-05.jpg",
+      "video_url": "https://www.youtube.com/embed/2D8W7dC1v1A?controls=1&rel=0&playsinline=0&cc_load_policy=0&autoplay=0&enablejsapi=1&origin=https%3A%2F%2Fwww.bulandra.ro&widgetid=1&forigin=https%3A%2F%2Fwww.bulandra.ro%2Fvanatoarea%2F&aoriginsup=1&vf=1"
     },
     {
       "title": "TACHE, IANKE \u0218I CAD\u00c2R",
@@ -708,7 +1002,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "Scris\u0103 \u00een 1932, piesaTache, Ianke \u015fi Cad\u00e2ra trecut proba timpului \u015fi a devenit unul dintre cele mai populare \u015fi mai montate texte interbelice din literatura dramatic\u0103 rom\u00e2neasc\u0103. Povestea celor trei mici negustori \u2013 un rom\u00e2n, un evreu \u015fi un turc \u2013 a c\u0103ror tihn\u0103 monoton\u0103 e tulburat\u0103 de o dilem\u0103 de ordin personal, redefine\u015fte rela\u0163iile interetnice \u015fi, \u00een profunzime, cele interumane.Tache, Ianke \u015fi Cad\u00e2rformuleaz\u0103 \u00eentreb\u0103ri \u015fi propune r\u0103spunsuri actuale \u00eentr-o manier\u0103 plin\u0103 de umor, \u00een care sl\u0103b...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2022/04/Tache-Ianke-si-Cadar-2021-foto-Madalina-Sinoae-18.jpg",
+      "video_url": "https://www.youtube.com/embed/4LWtR15M2mA"
     },
     {
       "title": "TACHE, IANKE \u0218I CAD\u00c2R",
@@ -719,7 +1017,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "Scris\u0103 \u00een 1932, piesaTache, Ianke \u015fi Cad\u00e2ra trecut proba timpului \u015fi a devenit unul dintre cele mai populare \u015fi mai montate texte interbelice din literatura dramatic\u0103 rom\u00e2neasc\u0103. Povestea celor trei mici negustori \u2013 un rom\u00e2n, un evreu \u015fi un turc \u2013 a c\u0103ror tihn\u0103 monoton\u0103 e tulburat\u0103 de o dilem\u0103 de ordin personal, redefine\u015fte rela\u0163iile interetnice \u015fi, \u00een profunzime, cele interumane.Tache, Ianke \u015fi Cad\u00e2rformuleaz\u0103 \u00eentreb\u0103ri \u015fi propune r\u0103spunsuri actuale \u00eentr-o manier\u0103 plin\u0103 de umor, \u00een care sl\u0103b...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2022/04/Tache-Ianke-si-Cadar-2021-foto-Madalina-Sinoae-18.jpg",
+      "video_url": "https://www.youtube.com/embed/4LWtR15M2mA"
     },
     {
       "title": "B\u0102IE\u021aII DE ZINC",
@@ -730,7 +1032,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "\u2022 dup\u0103: Svetlana Aleksievici \u2022\u00a0Distribu\u021bie: Mariana Mihu\u021b, Dana Dogaru, Ana Ioana Macaria, Rodica Laz\u0103r, Profira Serafim, Mirela Gorea, Camelia Maxim \u00a0 Spectacolul se adreseaz\u0103 publicului cu v\u00e2rsta de peste 14 ani *Spectacol cu supratitrare \u00een limba englez\u0103, la cerere January 31 @ 19:00 19:00 \u2014...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2022/10/casa-de-bilete-simplu.jpg",
+      "video_url": null
     },
     {
       "title": "FAMILY.EXE",
@@ -741,7 +1047,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "Family.exeeste o dramedie provocatoare \u0219i surprinz\u0103toare, despre vulnerabilitate \u0219i traume de familie. Tolstoi spunea c\u0103 fiecare familie e nefericit\u0103 \u00een felul ei. \u00cen noul spectacol al Teatrului Bulandra, regizorul \u0219i dramaturgul Mimi Br\u0103nescu ne invit\u0103, la r\u00e2ndul s\u0103u, s\u0103 explor\u0103m, cu umor incandescent \u0219i ironie, aceast\u0103 poveste veche de c\u00e2nd lumea \u2013 a rela\u021biilor familiale complicate \u0219i a firelor emo\u021bionale din trecut care ajung s\u0103 \u00eenc\u00e2lceasc\u0103 prezentul.",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2023/07/Family.exe-2023-foto-Andrei-Gindac-15-scaled.jpg",
+      "video_url": null
     },
     {
       "title": "ME\u0218TE\u0218UGUL VIE\u021aII",
@@ -752,7 +1062,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "Me\u015fte\u015fugul Vie\u0163ii, una dintre cele mai apreciate piese ale marelui dramaturg israelian Hanoch Levin, examineaz\u0103 via\u0163a din perspectiva unui cuplu: speran\u0163e pierdute, via\u0163\u0103 irosit\u0103, m\u00e2nie, violen\u0163\u0103, regrete, dificult\u0103\u0163i de comunicare. Lupta dulce-am\u0103ruie \u015fi disperat\u0103 dintre cei doi reflect\u0103 \u00eentreb\u0103ri universale. C\u00e2t de ridicol\u0103 \u015fi terifiant\u0103 poate fi trecerea noastr\u0103 prin via\u0163\u0103? C\u00e2t de tare ne p\u0103c\u0103lim pe noi \u00een\u015fine, \u00een multe momente, pentru a putea tr\u0103i, aparent lini\u015fti\u0163i \u015fi mul\u0163umi\u0163i, mai depa...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2025/04/Mestesugul-vietii-2011-foto-Cosmin-Ardeleanu-06-scaled.jpg",
+      "video_url": "https://www.youtube.com/embed/ObCzGHHLUG8"
     },
     {
       "title": "RABBIT HOLE",
@@ -763,7 +1077,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "Scris\u0103 de dramaturgul american David Lindsay-Abaire,Rabbit Holeeste o dram\u0103 psihologic\u0103 apreciat\u0103 care i-a adus autorului s\u0103u Premiul Pulitzer \u00een 2007. Piesa exploreaz\u0103 teme profunde precum durerea, pierderea, recunoa\u0219terea \u0219i capacitatea de supravie\u021buire a spiritului uman dup\u0103 o tragedie cumplit\u0103. Piesa se concentreaz\u0103 asupra cuplului Becca \u0219i Howie Corbett, a c\u0103ror via\u021b\u0103 perfect\u0103 este spulberat\u0103 dup\u0103 ce singurul lor fiu, Danny, \u00een v\u00e2rst\u0103 de patru ani, moare \u00eentr-un accident stupid.Rabbit Ho...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2026/01/Rabbit-Hole-2026-foto-Two-Bugs-01-scaled.jpg",
+      "video_url": null
     },
     {
       "title": "TACHE, IANKE \u0218I CAD\u00c2R",
@@ -774,7 +1092,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "Scris\u0103 \u00een 1932, piesaTache, Ianke \u015fi Cad\u00e2ra trecut proba timpului \u015fi a devenit unul dintre cele mai populare \u015fi mai montate texte interbelice din literatura dramatic\u0103 rom\u00e2neasc\u0103. Povestea celor trei mici negustori \u2013 un rom\u00e2n, un evreu \u015fi un turc \u2013 a c\u0103ror tihn\u0103 monoton\u0103 e tulburat\u0103 de o dilem\u0103 de ordin personal, redefine\u015fte rela\u0163iile interetnice \u015fi, \u00een profunzime, cele interumane.Tache, Ianke \u015fi Cad\u00e2rformuleaz\u0103 \u00eentreb\u0103ri \u015fi propune r\u0103spunsuri actuale \u00eentr-o manier\u0103 plin\u0103 de umor, \u00een care sl\u0103b...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2022/04/Tache-Ianke-si-Cadar-2021-foto-Madalina-Sinoae-18.jpg",
+      "video_url": "https://www.youtube.com/embed/4LWtR15M2mA"
     },
     {
       "title": "ART\u0102",
@@ -785,7 +1107,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "Oare cum ar reac\u0163iona cineva dac\u0103 prietenul s\u0103u cel mai bun ar face brusc o prostie at\u00e2t de colosal\u0103 \u00eenc\u00e2t ar pune sub semnul \u00eentreb\u0103rii \u00eensu\u015fi fundamentul rela\u0163iei lor de amici\u0163ie? Atunci c\u00e2nd un iubitor de art\u0103 cump\u0103r\u0103 ceea ce este la urma urmei un simplu tablou alb pentru o sum\u0103 exorbitant\u0103, cel mai bun prieten al s\u0103u o ia razna. Un al treilea prieten se g\u0103se\u015fte prins la mijloc \u00eentre cei doi, \u00eentr-un spectacol care uime\u015fte prin luciditate \u015fi umor. \u00cencercarea de a \u00een\u0163elege strania art\u0103 mode...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2025/04/Arta-2010-foto-Andrei-Gindac-12-scaled.jpg",
+      "video_url": "https://www.youtube.com/embed/tolVYSw9lK0"
     },
     {
       "title": "TEROARE",
@@ -796,7 +1122,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "Maiorul Lars Koch, pilot al unui avion de v\u00e2n\u0103toare tip Eurofighter al avia\u021biei germane, se afl\u0103 \u00een fa\u021ba verdictului: a ac\u021bionat corect sau nu \u00een ziua \u00een care a primit ordinul de a devia de la curs un avion Airbus apar\u021bin\u00e2nd companiei Lufthansa deturnat de terori\u0219ti? La bordul zborului LH 2047, cu plecare de pe aeroportul Tegel din Berlin c\u0103tre M\u00fcnchen, se afl\u0103 164 de persoane, iar aeronava se \u00eendreapt\u0103 spre Allianz Arena. Chiar \u00een acea sear\u0103 are loc meciul interna\u021bional Germania contra Angli...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2026/01/TEROARE-snur-17-dec-foto-Andrei-Gindac-Two-BugsCL1A2602-scaled.jpg",
+      "video_url": null
     },
     {
       "title": "TEROARE",
@@ -807,7 +1137,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "Maiorul Lars Koch, pilot al unui avion de v\u00e2n\u0103toare tip Eurofighter al avia\u021biei germane, se afl\u0103 \u00een fa\u021ba verdictului: a ac\u021bionat corect sau nu \u00een ziua \u00een care a primit ordinul de a devia de la curs un avion Airbus apar\u021bin\u00e2nd companiei Lufthansa deturnat de terori\u0219ti? La bordul zborului LH 2047, cu plecare de pe aeroportul Tegel din Berlin c\u0103tre M\u00fcnchen, se afl\u0103 164 de persoane, iar aeronava se \u00eendreapt\u0103 spre Allianz Arena. Chiar \u00een acea sear\u0103 are loc meciul interna\u021bional Germania contra Angli...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2026/01/TEROARE-snur-17-dec-foto-Andrei-Gindac-Two-BugsCL1A2602-scaled.jpg",
+      "video_url": null
     },
     {
       "title": "CIN\u0102 CU PRIETENI",
@@ -818,7 +1152,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "C\u00e2\u0219tig\u0103toare a premiului Pulitzer pentru dramaturgie \u00een 2000,Cin\u0103 cu prietenieste o capodoper\u0103 modern\u0103 care analizeaz\u0103 vie\u021bile a dou\u0103 cupluri \u0219i implica\u021biile pe care un divor\u021b le va avea asupra prieteniei dintre cei patru protagoni\u0219ti. Margulies este un fin observator al lucrurilor obi\u0219nuite ale vie\u021bii, cu sl\u0103biciunile ei \u2013 lucruri ce devin inedite, gra\u021bie modului remarcabil \u00een care sunt prezentate de autor. Textul, plin de umor, c\u0103ldur\u0103 \u0219i \u00een\u021belepciune, atrage prin limbajul impecabil \u2013 folos...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2024/07/Cina-cu-prieteni-2022-foto-Cosmin-Ardeleanu-15.jpg",
+      "video_url": "https://www.youtube.com/embed/Oad6ItH22F8?controls=1&rel=0&playsinline=0&cc_load_policy=0&autoplay=0&enablejsapi=1&origin=https%3A%2F%2Fwww.bulandra.ro&widgetid=1&forigin=https%3A%2F%2Fwww.bulandra.ro%2Fcina-cu-prieteni%2F&aoriginsup=1&vf=1"
     },
     {
       "title": "OBICEIURI NECURATE",
@@ -829,7 +1167,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "Comedie de situa\u0163ie construit\u0103 ca o veritabil\u0103 fars\u0103 shakespearian\u0103,Obiceiuri necuratereprezint\u0103 o incursiune \u00eentr-un univers monahal distorsionat. \u00cenl\u0103n\u0163uirea de situa\u0163ii tragi-comice \u00eempinse uneori p\u00e2n\u0103 la limita absurdului creeaz\u0103 o poveste care are ca scop prezentarea \u015fi demascarea ipocriziei clericale. Miz\u00e2nd pe fascina\u0163ia exercitat\u0103 de c\u0103tre universul monahal asupra lumii profane, textul se adreseaz\u0103 unei palete c\u00e2t mai largi de spectatori, \u00eendemn\u00e2ndu-i s\u0103 participe at\u00e2t pe cei deschi\u015fi...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2023/09/Obiceiuri-necurate-2023-foto-Andrei-Gindac-15.jpg",
+      "video_url": null
     },
     {
       "title": "TACHE, IANKE \u0218I CAD\u00c2R",
@@ -840,7 +1182,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "Scris\u0103 \u00een 1932, piesaTache, Ianke \u015fi Cad\u00e2ra trecut proba timpului \u015fi a devenit unul dintre cele mai populare \u015fi mai montate texte interbelice din literatura dramatic\u0103 rom\u00e2neasc\u0103. Povestea celor trei mici negustori \u2013 un rom\u00e2n, un evreu \u015fi un turc \u2013 a c\u0103ror tihn\u0103 monoton\u0103 e tulburat\u0103 de o dilem\u0103 de ordin personal, redefine\u015fte rela\u0163iile interetnice \u015fi, \u00een profunzime, cele interumane.Tache, Ianke \u015fi Cad\u00e2rformuleaz\u0103 \u00eentreb\u0103ri \u015fi propune r\u0103spunsuri actuale \u00eentr-o manier\u0103 plin\u0103 de umor, \u00een care sl\u0103b...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2022/04/Tache-Ianke-si-Cadar-2021-foto-Madalina-Sinoae-18.jpg",
+      "video_url": "https://www.youtube.com/embed/4LWtR15M2mA"
     },
     {
       "title": "V\u00c2N\u0102TOAREA",
@@ -851,7 +1197,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "\u00centr-un or\u0103\u0219el nordic desprins parc\u0103 dintr-un album multicolor despre hygge, re\u021beta danez\u0103 a fericirii, comunitatea \u00eenseamn\u0103 familie. Fiecare \u0219tie problemele sau bucuriile celuilalt \u0219i e oric\u00e2nd gata s\u0103-i sar\u0103 \u00een ajutor, m\u0103car cu un sfat \u2013 \u00ee\u0219i petrec weekendurile \u00eempreun\u0103, fac planuri de vacan\u021b\u0103 cu copiii, v\u00e2neaz\u0103 cerbi, s\u0103rb\u0103toresc Festivalul Recoltei \u0219i \u00eencearc\u0103 pe c\u00e2t posibil s\u0103 nu vorbeasc\u0103 despre ce simt cu adev\u0103rat. Via\u021ba nu e (complet) perfect\u0103 nici aici, \u00eens\u0103 atunci c\u00e2nd vecinii \u00ee\u021bi s...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2024/10/Vanatoarea-2024-foto-Andrei-si-Maria-Gindac-TwoBugs-05.jpg",
+      "video_url": "https://www.youtube.com/embed/2D8W7dC1v1A?controls=1&rel=0&playsinline=0&cc_load_policy=0&autoplay=0&enablejsapi=1&origin=https%3A%2F%2Fwww.bulandra.ro&widgetid=1&forigin=https%3A%2F%2Fwww.bulandra.ro%2Fvanatoarea%2F&aoriginsup=1&vf=1"
     },
     {
       "title": "ME\u0218TE\u0218UGUL VIE\u021aII",
@@ -862,7 +1212,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "Me\u015fte\u015fugul Vie\u0163ii, una dintre cele mai apreciate piese ale marelui dramaturg israelian Hanoch Levin, examineaz\u0103 via\u0163a din perspectiva unui cuplu: speran\u0163e pierdute, via\u0163\u0103 irosit\u0103, m\u00e2nie, violen\u0163\u0103, regrete, dificult\u0103\u0163i de comunicare. Lupta dulce-am\u0103ruie \u015fi disperat\u0103 dintre cei doi reflect\u0103 \u00eentreb\u0103ri universale. C\u00e2t de ridicol\u0103 \u015fi terifiant\u0103 poate fi trecerea noastr\u0103 prin via\u0163\u0103? C\u00e2t de tare ne p\u0103c\u0103lim pe noi \u00een\u015fine, \u00een multe momente, pentru a putea tr\u0103i, aparent lini\u015fti\u0163i \u015fi mul\u0163umi\u0163i, mai depa...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2025/04/Mestesugul-vietii-2011-foto-Cosmin-Ardeleanu-06-scaled.jpg",
+      "video_url": "https://www.youtube.com/embed/ObCzGHHLUG8"
     },
     {
       "title": "M\u0102SC\u0102RICIUL",
@@ -873,7 +1227,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "Un actor r\u0103mas \u00een teatru doar cu sufleurul \u00ee\u015fi retr\u0103ie\u015fte rolurile \u015fi amintirea succesului. O via\u0163\u0103 tr\u0103it\u0103 \u00eentre r\u00e2s \u015fi pl\u00e2ns, m\u0103rturia unui actor pe scen\u0103 \u015fi \u00een afara scenei sunt subiecte bune pentru o noapte alb\u0103 \u00eendestulat\u0103 cu vodc\u0103 \u015fi bucate iluzorii. Dou\u0103 recitaluri actorice\u015fti care nu trebuie ratate.",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2022/03/Mascariciul-2005-foto-Cosmin-Ardeleanu-09.jpg",
+      "video_url": "https://www.youtube.com/embed/_G2lU_QPd7U"
     },
     {
       "title": "TEROARE",
@@ -884,7 +1242,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "Maiorul Lars Koch, pilot al unui avion de v\u00e2n\u0103toare tip Eurofighter al avia\u021biei germane, se afl\u0103 \u00een fa\u021ba verdictului: a ac\u021bionat corect sau nu \u00een ziua \u00een care a primit ordinul de a devia de la curs un avion Airbus apar\u021bin\u00e2nd companiei Lufthansa deturnat de terori\u0219ti? La bordul zborului LH 2047, cu plecare de pe aeroportul Tegel din Berlin c\u0103tre M\u00fcnchen, se afl\u0103 164 de persoane, iar aeronava se \u00eendreapt\u0103 spre Allianz Arena. Chiar \u00een acea sear\u0103 are loc meciul interna\u021bional Germania contra Angli...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2026/01/TEROARE-snur-17-dec-foto-Andrei-Gindac-Two-BugsCL1A2602-scaled.jpg",
+      "video_url": null
     },
     {
       "title": "PORTUGALIA",
@@ -895,7 +1257,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "SpectacolulPortugalia, \u00een regia lui Attila B\u00e9res, redescoper\u0103 piesa lui Zolt\u00e1n Egressy \u2013 un text profund \u0219i plin de umor despre umanitate, \u00een care emo\u021biile mari nu \u00eencap mereu \u00een cele mai cuviincioase cuvinte, \u00een care se vorbe\u0219te \u00eenfocat \u0219i (delicios de) licen\u021bios, dar necurate sunt doar vorbele, nu \u0219i faptele. \u0218i, mai ales, nu inimile. \u00centr-un sat ca oricare altul, din Europa de Est \u0219i de aiurea, c\u00e2rciuma este locul \u00een care se adun\u0103 laolalt\u0103 toate grijile, dorurile, bucuriile \u0219i revoltele, l...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2025/04/Portugalia-2024-foto-Andrei-Gindac-TwoBugs-01-scaled.jpg",
+      "video_url": null
     },
     {
       "title": "TACHE, IANKE \u0218I CAD\u00c2R",
@@ -906,7 +1272,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "Scris\u0103 \u00een 1932, piesaTache, Ianke \u015fi Cad\u00e2ra trecut proba timpului \u015fi a devenit unul dintre cele mai populare \u015fi mai montate texte interbelice din literatura dramatic\u0103 rom\u00e2neasc\u0103. Povestea celor trei mici negustori \u2013 un rom\u00e2n, un evreu \u015fi un turc \u2013 a c\u0103ror tihn\u0103 monoton\u0103 e tulburat\u0103 de o dilem\u0103 de ordin personal, redefine\u015fte rela\u0163iile interetnice \u015fi, \u00een profunzime, cele interumane.Tache, Ianke \u015fi Cad\u00e2rformuleaz\u0103 \u00eentreb\u0103ri \u015fi propune r\u0103spunsuri actuale \u00eentr-o manier\u0103 plin\u0103 de umor, \u00een care sl\u0103b...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2022/04/Tache-Ianke-si-Cadar-2021-foto-Madalina-Sinoae-18.jpg",
+      "video_url": "https://www.youtube.com/embed/4LWtR15M2mA"
     },
     {
       "title": "GIGEL",
@@ -917,7 +1287,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "Gigeleste un monolog care are drept pretext cr\u00e2mpeie din biografia interpretului ce sunt folosite ca puncte de referin\u0163\u0103 \u00eentr-un text cu umor savuros, dar \u015fi sensibil, ce omagiaz\u0103 marii no\u015ftri actori care au dat \u015fi dau valoare actului teatral. Tema spectacolului nu o reprezint\u0103 biografia interpretului, ci felul surprinz\u0103tor \u00een care marii arti\u015fti pot influen\u0163a din umbr\u0103 un t\u00e2n\u0103r aflat \u00een c\u0103utarea unui drum \u00een via\u0163\u0103. \u201cOne-man show\u201d este un recital care solicit\u0103 calit\u0103\u0163i multiple, iar reu\u015fita sa...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2022/03/Gigel-2017-foto-Bogdan-Marina-08.jpg",
+      "video_url": "https://www.youtube.com/embed/AouqW61GJfk"
     },
     {
       "title": "ART\u0102",
@@ -928,7 +1302,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "Oare cum ar reac\u0163iona cineva dac\u0103 prietenul s\u0103u cel mai bun ar face brusc o prostie at\u00e2t de colosal\u0103 \u00eenc\u00e2t ar pune sub semnul \u00eentreb\u0103rii \u00eensu\u015fi fundamentul rela\u0163iei lor de amici\u0163ie? Atunci c\u00e2nd un iubitor de art\u0103 cump\u0103r\u0103 ceea ce este la urma urmei un simplu tablou alb pentru o sum\u0103 exorbitant\u0103, cel mai bun prieten al s\u0103u o ia razna. Un al treilea prieten se g\u0103se\u015fte prins la mijloc \u00eentre cei doi, \u00eentr-un spectacol care uime\u015fte prin luciditate \u015fi umor. \u00cencercarea de a \u00een\u0163elege strania art\u0103 mode...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2025/04/Arta-2010-foto-Andrei-Gindac-12-scaled.jpg",
+      "video_url": "https://www.youtube.com/embed/tolVYSw9lK0"
     },
     {
       "title": "SCAUNELE",
@@ -939,7 +1317,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "Scaunele\u2013 poate cea mai metafizic\u0103 dintre piesele lui Ionesco, continu\u0103 s\u0103 ne r\u0103scoleasc\u0103 existen\u0163a, pe care o credem sau vrem cu disperare s\u0103 o credem, plin\u0103 de sens \u015fi de evenimente importante. Ionesco ne arat\u0103, f\u0103r\u0103 menajamente, golul \u00een care ne zbatem, o imagine a omenirii \u00een c\u0103utarea propriei identit\u0103\u0163i \u015fi a unui scop care s\u0103 ne justifice via\u0163a. Doi b\u0103tr\u00e2ni \u00ee\u015fi analizeaz\u0103 cu melancolie via\u0163a. Vorbesc, se agit\u0103 \u015fi a\u015fteapt\u0103, alint\u00e2ndu-se cu amintiri ratate. O analiz\u0103 a ceea ce a fost feric...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2020/01/Scaunele6.jpg",
+      "video_url": null
     },
     {
       "title": "CIN\u0102 CU PRIETENI",
@@ -950,7 +1332,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "C\u00e2\u0219tig\u0103toare a premiului Pulitzer pentru dramaturgie \u00een 2000,Cin\u0103 cu prietenieste o capodoper\u0103 modern\u0103 care analizeaz\u0103 vie\u021bile a dou\u0103 cupluri \u0219i implica\u021biile pe care un divor\u021b le va avea asupra prieteniei dintre cei patru protagoni\u0219ti. Margulies este un fin observator al lucrurilor obi\u0219nuite ale vie\u021bii, cu sl\u0103biciunile ei \u2013 lucruri ce devin inedite, gra\u021bie modului remarcabil \u00een care sunt prezentate de autor. Textul, plin de umor, c\u0103ldur\u0103 \u0219i \u00een\u021belepciune, atrage prin limbajul impecabil \u2013 folos...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2024/07/Cina-cu-prieteni-2022-foto-Cosmin-Ardeleanu-15.jpg",
+      "video_url": "https://www.youtube.com/embed/Oad6ItH22F8?controls=1&rel=0&playsinline=0&cc_load_policy=0&autoplay=0&enablejsapi=1&origin=https%3A%2F%2Fwww.bulandra.ro&widgetid=1&forigin=https%3A%2F%2Fwww.bulandra.ro%2Fcina-cu-prieteni%2F&aoriginsup=1&vf=1"
     },
     {
       "title": "B\u0102IE\u021aII DE ZINC",
@@ -961,7 +1347,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "\u2022 dup\u0103: Svetlana Aleksievici \u2022\u00a0Distribu\u021bie: Mariana Mihu\u021b, Dana Dogaru, Ana Ioana Macaria, Rodica Laz\u0103r, Profira Serafim, Mirela Gorea, Camelia Maxim \u00a0 Spectacolul se adreseaz\u0103 publicului cu v\u00e2rsta de peste 14 ani *Spectacol cu supratitrare \u00een limba englez\u0103, la cerere February 27 @ 19:00 19:00 \u2014...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2022/10/casa-de-bilete-simplu.jpg",
+      "video_url": null
     },
     {
       "title": "FAMILY.EXE",
@@ -972,7 +1362,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "Family.exeeste o dramedie provocatoare \u0219i surprinz\u0103toare, despre vulnerabilitate \u0219i traume de familie. Tolstoi spunea c\u0103 fiecare familie e nefericit\u0103 \u00een felul ei. \u00cen noul spectacol al Teatrului Bulandra, regizorul \u0219i dramaturgul Mimi Br\u0103nescu ne invit\u0103, la r\u00e2ndul s\u0103u, s\u0103 explor\u0103m, cu umor incandescent \u0219i ironie, aceast\u0103 poveste veche de c\u00e2nd lumea \u2013 a rela\u021biilor familiale complicate \u0219i a firelor emo\u021bionale din trecut care ajung s\u0103 \u00eenc\u00e2lceasc\u0103 prezentul.",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2023/07/Family.exe-2023-foto-Andrei-Gindac-15-scaled.jpg",
+      "video_url": null
     },
     {
       "title": "TACHE, IANKE \u0218I CAD\u00c2R",
@@ -983,7 +1377,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "Scris\u0103 \u00een 1932, piesaTache, Ianke \u015fi Cad\u00e2ra trecut proba timpului \u015fi a devenit unul dintre cele mai populare \u015fi mai montate texte interbelice din literatura dramatic\u0103 rom\u00e2neasc\u0103. Povestea celor trei mici negustori \u2013 un rom\u00e2n, un evreu \u015fi un turc \u2013 a c\u0103ror tihn\u0103 monoton\u0103 e tulburat\u0103 de o dilem\u0103 de ordin personal, redefine\u015fte rela\u0163iile interetnice \u015fi, \u00een profunzime, cele interumane.Tache, Ianke \u015fi Cad\u00e2rformuleaz\u0103 \u00eentreb\u0103ri \u015fi propune r\u0103spunsuri actuale \u00eentr-o manier\u0103 plin\u0103 de umor, \u00een care sl\u0103b...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2022/04/Tache-Ianke-si-Cadar-2021-foto-Madalina-Sinoae-18.jpg",
+      "video_url": "https://www.youtube.com/embed/4LWtR15M2mA"
     },
     {
       "title": "AZILUL DE MOARTE",
@@ -994,7 +1392,11 @@
       "source": "bulandra",
       "category": "theatre",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "Regizorul Alexandru Dabija revine la Bulandra cu provocatoarea comedie poli\u021bist\u0103Azilul de moartede Georges Contamin, montat\u0103 \u00een premier\u0103 na\u021bional\u0103. Un spectacol plin de suspans, care aminte\u0219te \u00eentruc\u00e2tva de piesa lui Gorki, doar c\u0103 de data asta abandona\u021bii lumii nu accept\u0103 s\u0103 mearg\u0103 bl\u00e2nd spre \u201enoapte\u201c, ca-n poemul lui Dylan Thomas, ci se bucur\u0103 zgomotos de via\u021b\u0103. P\u00e2n\u0103 \u00eentr-o zi c\u00e2nd, \u00een azilul plin de personaje efervescente \u0219i de pove\u0219ti fascinante, \u00eencep s\u0103 se petreac\u0103 tot felul de lucruri ...",
+      "description_source": "scraped",
+      "image_url": "https://www.bulandra.ro/wp-content/uploads/2023/10/Azilul-de-moarte-2023-foto-Anastasia-Atanasoska-19-scaled.jpg",
+      "video_url": null
     }
   ],
   "culture_events": [
@@ -1007,7 +1409,11 @@
       "source": "arcub",
       "category": "culture",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "Cu o experien\u021b\u0103 de 15 ani \u00een sound design \u0219i compozi\u021bie de muzic\u0103 pentru jocuri,Cosmin M\u00eerzavine la Bucure\u0219ti pentru o serat\u0103 dedicat\u0103 \u00eent\u00e2lnirii cu cei care \u00eei \u00eemp\u0103rt\u0103\u0219esc pasiunea \u0219i vor s\u0103 exploreze posibilitatea unei astfel de meserii,joi, 22 ianuarie,la Arcub \u00een contextulThe Art of the Game. Cosmin M\u00eerza este singurul sound designer de pe scena local\u0103 expus \u00een sala dedicat\u0103 creatorilor rom\u00e2ni din TAG, iar crea\u021biile lui pot fi ascultate \u00een expo p\u00e2n\u0103 pe 1 martie.\u00a0Autodidact pasionat de psi...",
+      "description_source": "scraped",
+      "image_url": "https://arcub.ro/img/aa956136-95fe-4c72-acd5-0e0639d08984/1200x630.jpg?fm=jpg&q=85&fit=crop&w=900&h=470&crop=%2C%2C%2C&s=e6dea77b832e80024c97d96e337a3b96",
+      "video_url": null
     },
     {
       "title": "Dincolo de t\u0103cere",
@@ -1018,7 +1424,11 @@
       "source": "arcub",
       "category": "culture",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "ARCUB \u2013 Centrul Cultural al Municipiului Bucure\u0219ti sus\u021bine proiectul \u201eDincolo de t\u0103cere\u201d,ca parte a misiunii sale de responsabilitate social\u0103 \u0219i de promovare a incluziunii persoanelor cu dizabilit\u0103\u021bi. Lansat de Asocia\u021bia ARTPLEX, spectacolul are \u00een distribu\u021bie persoane cu dizabilit\u0103\u021bi \u0219i este accesibil\u00a0at\u00e2t persoanelor surde, c\u00e2t \u0219i celor auzitoare,reprezint\u00e2nd prima punere \u00een scen\u0103 din Rom\u00e2nia a unui text semnat de Jack Thorne, recent c\u00e2\u0219tig\u0103tor al Golden Globe pentru miniseriaAdolescence. C...",
+      "description_source": "scraped",
+      "image_url": "https://arcub.ro/img/aa956136-95fe-4c72-acd5-0e0639d08984/1200x630.jpg?fm=jpg&q=85&fit=crop&w=900&h=470&crop=%2C%2C%2C&s=e6dea77b832e80024c97d96e337a3b96",
+      "video_url": null
     },
     {
       "title": "The Art of the Game",
@@ -1029,7 +1439,11 @@
       "source": "arcub",
       "category": "culture",
       "price": null,
-      "spotify_url": null
+      "spotify_url": null,
+      "description": "The Art of the Game (TAG)este primul eveniment cultural de amploare din Rom\u00e2nia dedicat jocurilor video \u0219i artelor conexe, organizat de ARCUB la Hanul Gabroveni, \u00een perioada8 noiembrie 2025 \u2013 1 martie 2026. G\u00e2ndit\u0103 ca oexperien\u021b\u0103 curatorial\u0103, TAG invit\u0103 publicul s\u0103 priveasc\u0103 jocurile videodincolo de divertisment, ca pe unlimbaj artistic, uninstrument educa\u021bionalcu aplica\u021bii reale \u00een \u00eenv\u0103\u021bare \u0219i unspa\u021biu social\u00een care comunit\u0103\u021bile se formeaz\u0103 \u0219i colaboreaz\u0103. Parcursul reune\u0219tearte vizuale, muz...",
+      "description_source": "scraped",
+      "image_url": "https://arcub.ro/img/aa956136-95fe-4c72-acd5-0e0639d08984/1200x630.jpg?fm=jpg&q=85&fit=crop&w=900&h=470&crop=%2C%2C%2C&s=e6dea77b832e80024c97d96e337a3b96",
+      "video_url": null
     }
   ]
 }

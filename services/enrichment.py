@@ -20,38 +20,53 @@ def extract_bulandra(soup: BeautifulSoup, url: str) -> dict:
     """Extract enrichment data from Bulandra event pages."""
     result: dict = {"description": None, "image_url": None, "video_url": None}
     
-    # Image: look for gallery images or main poster
-    gallery_imgs = soup.select("a[href*='wp-content/uploads'] img")
-    if gallery_imgs:
-        parent = gallery_imgs[0].find_parent("a")
-        if parent and parent.get("href"):
-            result["image_url"] = parent["href"]
-    else:
-        # Try og:image meta tag
+    # Image: gallery carousel links with wp-content/uploads
+    gallery_links = soup.select("a[href*='wp-content/uploads']")
+    for link in gallery_links:
+        href = link.get("href", "")
+        if href and any(ext in href.lower() for ext in ['.jpg', '.jpeg', '.png', '.webp']):
+            result["image_url"] = href
+            break
+    
+    # Fallback to og:image
+    if not result["image_url"]:
         og_image = soup.select_one("meta[property='og:image']")
         if og_image and og_image.get("content"):
             result["image_url"] = og_image["content"]
     
-    # Video: look for YouTube embeds
-    iframe = soup.select_one("iframe[src*='youtube']")
-    if iframe and iframe.get("src"):
-        src = iframe["src"]
-        # Convert to embed URL format
-        if "youtube.com" in src or "youtu.be" in src:
-            result["video_url"] = src
+    # Video: YouTube links (not iframes - Bulandra uses direct links)
+    video_link = soup.select_one("a[href*='youtube.com/watch'], a[href*='youtu.be']")
+    if video_link:
+        href = video_link.get("href", "")
+        # Convert watch URL to embed format
+        if "youtube.com/watch" in href:
+            video_id = re.search(r'v=([^&]+)', href)
+            if video_id:
+                result["video_url"] = f"https://www.youtube.com/embed/{video_id.group(1)}"
+        elif "youtu.be" in href:
+            video_id = href.split("/")[-1].split("?")[0]
+            result["video_url"] = f"https://www.youtube.com/embed/{video_id}"
     
-    # Description: look for content sections
-    # Bulandra pages have structured content with author info, description, etc.
-    content_divs = soup.select(".entry-content p, .post-content p, article p")
-    texts = []
-    for p in content_divs:
-        text = p.get_text(strip=True)
-        # Skip very short paragraphs or navigation elements
-        if len(text) > 50 and not text.startswith("Cumpără"):
-            texts.append(text)
+    # Also check for iframe embeds
+    if not result["video_url"]:
+        iframe = soup.select_one("iframe[src*='youtube']")
+        if iframe and iframe.get("src"):
+            result["video_url"] = iframe["src"]
     
-    if texts:
-        result["description"] = " ".join(texts[:3])  # First 3 paragraphs
+    # Description: Bulandra uses eael-tabs with #intro-tab containing the synopsis
+    intro_tab = soup.select_one("#intro-tab, .eael-tab-content-item.active")
+    if intro_tab:
+        # Get paragraphs from the intro tab
+        paragraphs = intro_tab.select("p")
+        texts = [p.get_text(strip=True) for p in paragraphs if len(p.get_text(strip=True)) > 30]
+        if texts:
+            result["description"] = " ".join(texts[:2])
+    
+    # Fallback: og:description
+    if not result["description"]:
+        og_desc = soup.select_one("meta[property='og:description']")
+        if og_desc and og_desc.get("content"):
+            result["description"] = og_desc["content"]
     
     return result
 
@@ -106,6 +121,92 @@ def extract_mnac(soup: BeautifulSoup, url: str) -> dict:
     return result
 
 
+def extract_metropolis(soup: BeautifulSoup, url: str) -> dict:
+    """Extract enrichment data from Teatrul Metropolis event pages."""
+    result: dict = {"description": None, "image_url": None, "video_url": None}
+    
+    # Image: og:image
+    og_image = soup.select_one("meta[property='og:image']")
+    if og_image and og_image.get("content"):
+        result["image_url"] = og_image["content"]
+    
+    # Description: og:description
+    og_desc = soup.select_one("meta[property='og:description']")
+    if og_desc and og_desc.get("content"):
+        result["description"] = og_desc["content"]
+    
+    # Video: YouTube watch links (trailer)
+    video_link = soup.select_one("a[href*='youtube.com/watch'], a[href*='youtu.be']")
+    if video_link:
+        href = video_link.get("href", "")
+        if "youtube.com/watch" in href:
+            video_id = re.search(r'v=([^&]+)', href)
+            if video_id:
+                result["video_url"] = f"https://www.youtube.com/embed/{video_id.group(1)}"
+        elif "youtu.be" in href:
+            video_id = href.split("/")[-1].split("?")[0]
+            result["video_url"] = f"https://www.youtube.com/embed/{video_id}"
+    
+    return result
+
+
+def extract_nottara(soup: BeautifulSoup, url: str) -> dict:
+    """Extract enrichment data from Teatrul Nottara event pages."""
+    result: dict = {"description": None, "image_url": None, "video_url": None}
+    
+    # Image: og:image
+    og_image = soup.select_one("meta[property='og:image']")
+    if og_image and og_image.get("content"):
+        result["image_url"] = og_image["content"]
+    
+    # Description: og:description
+    og_desc = soup.select_one("meta[property='og:description']")
+    if og_desc and og_desc.get("content"):
+        result["description"] = og_desc["content"]
+    
+    # Video: YouTube embeds or links
+    video_link = soup.select_one("a[href*='youtube.com/watch'], a[href*='youtu.be']")
+    if video_link:
+        href = video_link.get("href", "")
+        if "youtube.com/watch" in href:
+            video_id = re.search(r'v=([^&]+)', href)
+            if video_id:
+                result["video_url"] = f"https://www.youtube.com/embed/{video_id.group(1)}"
+        elif "youtu.be" in href:
+            video_id = href.split("/")[-1].split("?")[0]
+            result["video_url"] = f"https://www.youtube.com/embed/{video_id}"
+    
+    # Fallback to iframe
+    if not result["video_url"]:
+        iframe = soup.select_one("iframe[src*='youtube']")
+        if iframe and iframe.get("src"):
+            result["video_url"] = iframe["src"]
+    
+    return result
+
+
+def extract_tnb(soup: BeautifulSoup, url: str) -> dict:
+    """Extract enrichment data from Teatrul Național București (TNB) event pages."""
+    result: dict = {"description": None, "image_url": None, "video_url": None}
+    
+    # TNB is Angular-based, limited scraping capability
+    # Image: og:image
+    og_image = soup.select_one("meta[property='og:image']")
+    if og_image and og_image.get("content"):
+        result["image_url"] = og_image["content"]
+    
+    # Description: og:description or meta description
+    og_desc = soup.select_one("meta[property='og:description']")
+    if og_desc and og_desc.get("content"):
+        result["description"] = og_desc["content"]
+    else:
+        meta_desc = soup.select_one("meta[name='description']")
+        if meta_desc and meta_desc.get("content"):
+            result["description"] = meta_desc["content"]
+    
+    return result
+
+
 def extract_generic(soup: BeautifulSoup, url: str) -> dict:
     """Generic extractor for unknown sources."""
     result: dict = {"description": None, "image_url": None, "video_url": None}
@@ -124,10 +225,23 @@ def extract_generic(soup: BeautifulSoup, url: str) -> dict:
         if meta_desc and meta_desc.get("content"):
             result["description"] = meta_desc["content"]
     
-    # Look for video embeds
+    # Look for video embeds (iframes)
     iframe = soup.select_one("iframe[src*='youtube'], iframe[src*='vimeo']")
     if iframe and iframe.get("src"):
         result["video_url"] = iframe["src"]
+    
+    # Also look for video links
+    if not result["video_url"]:
+        video_link = soup.select_one("a[href*='youtube.com/watch'], a[href*='youtu.be']")
+        if video_link:
+            href = video_link.get("href", "")
+            if "youtube.com/watch" in href:
+                video_id = re.search(r'v=([^&]+)', href)
+                if video_id:
+                    result["video_url"] = f"https://www.youtube.com/embed/{video_id.group(1)}"
+            elif "youtu.be" in href:
+                video_id = href.split("/")[-1].split("?")[0]
+                result["video_url"] = f"https://www.youtube.com/embed/{video_id}"
     
     return result
 
@@ -137,6 +251,9 @@ SOURCE_EXTRACTORS = {
     "bulandra": extract_bulandra,
     "arcub": extract_arcub,
     "mnac": extract_mnac,
+    "metropolis": extract_metropolis,
+    "nottara": extract_nottara,
+    "tnb": extract_tnb,
 }
 
 
@@ -147,7 +264,7 @@ def scrape_event_details(event: Event) -> dict:
     
     try:
         # Most theatre sites need JS rendering
-        html = fetch_page(event.url, needs_js=True, timeout=30000)
+        html = fetch_page(event.url, needs_js=True, timeout=15000)
     except HttpError as e:
         print(f"  Failed to fetch {event.url}: {e}")
         return {"description": None, "image_url": None, "video_url": None}
@@ -235,9 +352,15 @@ def enrich_events(events: list[Event]) -> list[Event]:
     """Enrich all theatre/culture events with additional details."""
     enriched: list[Event] = []
     
-    for event in events:
+    theatre_culture = [e for e in events if e.category in ("theatre", "culture")]
+    total = len(theatre_culture)
+    
+    for i, event in enumerate(events):
         if event.category in ("theatre", "culture"):
+            print(f"  [{i+1}/{total}] Enriching: {event.title[:40]}...", end=" ", flush=True)
             enriched_event = enrich_event(event)
+            status = "✓" if enriched_event.description or enriched_event.image_url else "○"
+            print(status)
             enriched.append(enriched_event)
         else:
             enriched.append(event)

@@ -14,7 +14,7 @@ from types import ModuleType
 from models import Event
 from scrapers.culture import arcub, mnac
 from scrapers.music import control, enescu, expirat, garana, jazzinthepark, jazzx, jfr, quantic
-from scrapers.theatre import bulandra
+from scrapers.theatre import bulandra, cuibul, godot, grivita53, metropolis, nottara, teatrulmic, tnb
 from services.dedup import llm_dedup, stage1_dedup
 from services.enrichment import enrich_events
 from services.spotify import search_artist
@@ -58,7 +58,7 @@ def run_music_scrapers() -> list[Event]:
 def run_theatre_scrapers() -> list[Event]:
     """Run all theatre scrapers and collect events."""
     events: list[Event] = []
-    for scraper in [bulandra]:
+    for scraper in [bulandra, cuibul, godot, grivita53, metropolis, nottara, teatrulmic, tnb]:
         events.extend(run_scraper_safely(scraper))
     return events
 
