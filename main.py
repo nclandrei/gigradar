@@ -13,8 +13,8 @@ from types import ModuleType
 
 from models import Event
 from services.email import ScraperError
-from scrapers.culture import arcub, mnac
-from scrapers.music import control, enescu, expirat, garana, jazzinthepark, jazzx, jfr, quantic
+from scrapers.culture import arcub, improteca, mnac
+from scrapers.music import ateneul, control, enescu, expirat, garana, jazzinthepark, jazzx, jfr, operanb, quantic
 from scrapers.theatre import bulandra, cuibul, godot, grivita53, metropolis, nottara, teatrulmic, tnb
 from services.dedup import llm_dedup, stage1_dedup
 from services.enrichment import enrich_events
@@ -52,7 +52,7 @@ def run_scraper_safely(scraper: ModuleType) -> list[Event]:
 def run_music_scrapers() -> list[Event]:
     """Run all music scrapers and collect events."""
     events: list[Event] = []
-    all_scrapers = [control, enescu, expirat, quantic, jfr, garana, jazzinthepark, jazzx]
+    all_scrapers = [ateneul, control, enescu, expirat, operanb, quantic, jfr, garana, jazzinthepark, jazzx]
     run_festivals = should_run_festival_scrapers()
     
     for scraper in all_scrapers:
@@ -76,7 +76,7 @@ def run_theatre_scrapers() -> list[Event]:
 def run_culture_scrapers() -> list[Event]:
     """Run all culture scrapers and collect events."""
     events: list[Event] = []
-    for scraper in [arcub, mnac]:
+    for scraper in [arcub, improteca, mnac]:
         events.extend(run_scraper_safely(scraper))
     return events
 
