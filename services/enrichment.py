@@ -207,6 +207,216 @@ def extract_tnb(soup: BeautifulSoup, url: str) -> dict:
     return result
 
 
+def extract_cuibul(soup: BeautifulSoup, url: str) -> dict:
+    """Extract enrichment data from Cuibul Artiștilor event pages."""
+    result: dict = {"description": None, "image_url": None, "video_url": None}
+    
+    # Image: look for event images in /events_images/ path
+    event_img = soup.select_one("img[src*='events_images']")
+    if event_img and event_img.get("src"):
+        result["image_url"] = event_img["src"]
+    
+    # Description: Cuibul uses Vue/Vuetify, paragraphs are in .occurence section
+    paragraphs = soup.select(".occurence p")
+    texts = [p.get_text(strip=True) for p in paragraphs if len(p.get_text(strip=True)) > 30]
+    if texts:
+        result["description"] = " ".join(texts[:3])
+    
+    # Video: YouTube embeds or links
+    video_link = soup.select_one("a[href*='youtube.com/watch'], a[href*='youtu.be']")
+    if video_link:
+        href = video_link.get("href", "")
+        if "youtube.com/watch" in href:
+            video_id = re.search(r'v=([^&]+)', href)
+            if video_id:
+                result["video_url"] = f"https://www.youtube.com/embed/{video_id.group(1)}"
+        elif "youtu.be" in href:
+            video_id = href.split("/")[-1].split("?")[0]
+            result["video_url"] = f"https://www.youtube.com/embed/{video_id}"
+    
+    return result
+
+
+def extract_godot(soup: BeautifulSoup, url: str) -> dict:
+    """Extract enrichment data from Teatrul Godot event pages."""
+    result: dict = {"description": None, "image_url": None, "video_url": None}
+    
+    # Image: Godot uses background images on carousel items
+    # Try to find style attribute with background-image
+    carousel_item = soup.select_one(".carousel-item.show-item[style*='background']")
+    if carousel_item:
+        style = carousel_item.get("style", "")
+        match = re.search(r'url\(["\']?([^"\'()]+)["\']?\)', style)
+        if match:
+            result["image_url"] = match.group(1)
+    
+    # Fallback to og:image
+    if not result["image_url"]:
+        og_image = soup.select_one("meta[property='og:image']")
+        if og_image and og_image.get("content"):
+            img_url = og_image["content"]
+            # Skip generic logo images
+            if "logo" not in img_url.lower():
+                result["image_url"] = img_url
+    
+    # Description: main section has show info
+    main = soup.select_one("main")
+    if main:
+        text = main.get_text(" ", strip=True)
+        # Extract meaningful description text (after show metadata)
+        if len(text) > 100:
+            result["description"] = text[:400]
+    
+    # Video: YouTube embeds
+    iframe = soup.select_one("iframe[src*='youtube']")
+    if iframe and iframe.get("src"):
+        result["video_url"] = iframe["src"]
+    
+    return result
+
+
+def extract_grivita53(soup: BeautifulSoup, url: str) -> dict:
+    """Extract enrichment data from Teatrul Grivița 53 event pages."""
+    result: dict = {"description": None, "image_url": None, "video_url": None}
+    
+    # Image: poster image - look for show poster, skip logo/footer images
+    for img in soup.select("img[src*='/images/']"):
+        src = img.get("src", "")
+        # Skip logo and footer images
+        if "logo" in src.lower() or "footer" in src.lower():
+            continue
+        # Look for poster images (usually have poster or show name)
+        if "poster" in src.lower() or img.get("alt"):
+            if not src.startswith("http"):
+                src = "https://www.grivita53.ro" + src
+            result["image_url"] = src
+            break
+    
+    # Description: paragraphs after "DESPRE SPECTACOL" heading
+    paragraphs = soup.select("p")
+    texts = [p.get_text(strip=True) for p in paragraphs if len(p.get_text(strip=True)) > 50]
+    if texts:
+        result["description"] = " ".join(texts[:2])
+    
+    # Video: YouTube embeds or links
+    iframe = soup.select_one("iframe[src*='youtube']")
+    if iframe and iframe.get("src"):
+        result["video_url"] = iframe["src"]
+    else:
+        yt_link = soup.select_one("a[href*='youtube.com/watch'], a[href*='youtu.be']")
+        if yt_link:
+            href = yt_link.get("href", "")
+            if "youtube.com/watch" in href:
+                video_id = re.search(r'v=([^&]+)', href)
+                if video_id:
+                    result["video_url"] = f"https://www.youtube.com/embed/{video_id.group(1)}"
+    
+    return result
+
+
+def extract_teatrulmic(soup: BeautifulSoup, url: str) -> dict:
+    """Extract enrichment data from Teatrul Mic event pages."""
+    result: dict = {"description": None, "image_url": None, "video_url": None}
+    
+    # Image: WordPress featured image / poster
+    featured_img = soup.select_one(".wp-post-image, img.size-full")
+    if featured_img and featured_img.get("src"):
+        result["image_url"] = featured_img["src"]
+    
+    # Fallback: gallery images
+    if not result["image_url"]:
+        gallery_link = soup.select_one("a[href*='wp-content/uploads'] img")
+        if gallery_link:
+            parent_link = gallery_link.find_parent("a")
+            if parent_link:
+                result["image_url"] = parent_link.get("href")
+    
+    # Description: look for meaningful text content
+    # Try specific content patterns first
+    all_text = []
+    
+    # Remove navigation, script, style elements from parsing
+    for tag in soup.find_all(['script', 'style', 'nav', 'header', 'footer']):
+        tag.decompose()
+    
+    # Look for text nodes directly
+    for elem in soup.find_all(string=True):
+        parent = elem.parent
+        if parent.name in ['a', 'button', 'input']:
+            continue
+        text = elem.strip()
+        # Must be substantial text, not navigation/metadata
+        if len(text) > 100:
+            # Skip navigation and meta content
+            skip_patterns = [
+                "Stagiunea", "STAGIUNEA", "SPECTACOLE", "TRUPA TM", "PROGRAM",
+                "STIRI", "INTERVIURI", "CONTACT", "CALENDAR", "DISTRIBUTIE",
+                "Cumpara Bilet", "Despre Spectacol", "Politica de", "Login",
+                "ticketsys", "<a ", "class=", "style="
+            ]
+            if not any(skip in text for skip in skip_patterns):
+                all_text.append(text)
+    
+    if all_text:
+        result["description"] = " ".join(all_text[:2])[:400]
+    
+    # Try og:description as fallback
+    if not result["description"]:
+        og_desc = soup.select_one("meta[property='og:description']")
+        if og_desc and og_desc.get("content"):
+            result["description"] = og_desc["content"]
+    
+    # Video: YouTube embeds
+    iframe = soup.select_one("iframe[src*='youtube']")
+    if iframe and iframe.get("src"):
+        result["video_url"] = iframe["src"]
+    
+    return result
+
+
+def extract_improteca(soup: BeautifulSoup, url: str) -> dict:
+    """Extract enrichment data from Improteca event pages."""
+    result: dict = {"description": None, "image_url": None, "video_url": None}
+    
+    # Image: og:image (Elementor-based site)
+    og_image = soup.select_one("meta[property='og:image']")
+    if og_image and og_image.get("content"):
+        result["image_url"] = og_image["content"]
+    
+    # Fallback: featured image
+    if not result["image_url"]:
+        featured = soup.select_one(".elementor-widget-image img, article img")
+        if featured and featured.get("src"):
+            result["image_url"] = featured["src"]
+    
+    # Description: paragraphs from content
+    paragraphs = soup.select(".elementor-widget-text-editor p, article p, .entry-content p")
+    texts = []
+    for p in paragraphs:
+        text = p.get_text(strip=True)
+        # Skip short paragraphs and emoji-only lines
+        if len(text) > 30 and not text.startswith("📅") and not text.startswith("🗺️"):
+            texts.append(text)
+    
+    if texts:
+        result["description"] = " ".join(texts[:3])
+    
+    # Video: YouTube embeds or links
+    iframe = soup.select_one("iframe[src*='youtube']")
+    if iframe and iframe.get("src"):
+        result["video_url"] = iframe["src"]
+    else:
+        yt_link = soup.select_one("a[href*='youtube.com/watch'], a[href*='youtu.be']")
+        if yt_link:
+            href = yt_link.get("href", "")
+            if "youtube.com/watch" in href:
+                video_id = re.search(r'v=([^&]+)', href)
+                if video_id:
+                    result["video_url"] = f"https://www.youtube.com/embed/{video_id.group(1)}"
+    
+    return result
+
+
 def extract_generic(soup: BeautifulSoup, url: str) -> dict:
     """Generic extractor for unknown sources."""
     result: dict = {"description": None, "image_url": None, "video_url": None}
@@ -254,6 +464,11 @@ SOURCE_EXTRACTORS = {
     "metropolis": extract_metropolis,
     "nottara": extract_nottara,
     "tnb": extract_tnb,
+    "cuibul": extract_cuibul,
+    "godot": extract_godot,
+    "grivita53": extract_grivita53,
+    "teatrulmic": extract_teatrulmic,
+    "improteca": extract_improteca,
 }
 
 
