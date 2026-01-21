@@ -82,12 +82,19 @@ def parse_json_event(data: dict) -> Event | None:
         excerpt = data.get("excerpt", "")
         author = None
         if excerpt:
-            # Match "de Author Name" pattern
-            author_match = re.search(r'de\s+([^•<\n]+)', excerpt)
+            # Match "de Author Name" or "de: Author Name" or "după Author Name" pattern
+            # Use word boundary and stop at bullet, HTML tag, or distribuție
+            author_match = re.search(r'(?:de:|de|după:?)\s+([^•<\n]+?)(?:\s*(?:•|<|Distribuție|$))', excerpt, re.IGNORECASE)
             if author_match:
                 author = author_match.group(1).strip()
-                # Clean HTML entities and extra whitespace
-                author = re.sub(r'\s+', ' ', author).strip()
+                # Skip if it's the age restriction text (e.g., "peste 14 ani")
+                if re.match(r'^peste\s+\d+\s+ani', author, re.IGNORECASE):
+                    author = None
+                else:
+                    # Clean HTML entities and extra whitespace
+                    author = re.sub(r'\s+', ' ', author).strip()
+                    # Remove trailing punctuation
+                    author = author.rstrip(' •')
         
         return Event(
             title=title,

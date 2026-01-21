@@ -12,6 +12,7 @@ from pathlib import Path
 from types import ModuleType
 
 from models import Event
+from services.email import ScraperError
 from scrapers.culture import arcub, mnac
 from scrapers.music import control, enescu, expirat, garana, jazzinthepark, jazzx, jfr, quantic
 from scrapers.theatre import bulandra, cuibul, godot, grivita53, metropolis, nottara, teatrulmic, tnb
@@ -29,13 +30,22 @@ def should_run_festival_scrapers() -> bool:
     return datetime.now().day == 1
 
 
+scraper_errors: list[ScraperError] = []
+
+
 def run_scraper_safely(scraper: ModuleType) -> list[Event]:
     """Run a single scraper, catching and recording any errors."""
+    import traceback
     scraper_name = scraper.__name__.split(".")[-1]
     try:
         return scraper.scrape()
     except Exception as e:
         print(f"⚠️  Scraper '{scraper_name}' failed: {e}")
+        scraper_errors.append(ScraperError(
+            scraper_name=scraper_name,
+            error_message=str(e),
+            traceback=traceback.format_exc(),
+        ))
         return []
 
 
