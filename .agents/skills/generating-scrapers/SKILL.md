@@ -122,33 +122,56 @@ def scrape() -> list[Event]:
     return events
 ```
 
-### Phase 3: Verify
+### Phase 3: Verify Scraper
 
-Test the scraper directly (from project root):
-
+**Step 1: Test basic scraping**
 ```bash
-python3 -c "from scrapers.{category}.{name} import scrape; import json; events = scrape(); print(f'{len(events)} events'); print(json.dumps([{'title': e.title, 'date': e.date.isoformat(), 'venue': e.venue} for e in events[:5]], indent=2))"
+python3 -c "
+from scrapers.{category}.{name} import scrape
+events = scrape()
+print(f'{len(events)} events found')
+for e in events[:5]:
+    print(f'  - {e.title} ({e.date.strftime(\"%d.%m.%Y\")}) @ {e.venue}')
+"
 ```
 
-Then compare against the live page using Chrome DevTools MCP:
+**Step 2: Debug if 0 events returned**
+```bash
+python3 -c "
+from services.http import fetch_page
+from bs4 import BeautifulSoup
+
+html = fetch_page('URL', needs_js=False)
+soup = BeautifulSoup(html, 'html.parser')
+
+# Check if expected elements exist
+items = soup.select('CSS_SELECTOR')
+print(f'Found {len(items)} items')
+for item in items[:2]:
+    print('---')
+    print(item.get_text()[:200])
+"
+```
+
+**Step 3: Compare against live page**
 1. Use `mcp__chrome_devtools__take_snapshot` to see current page state
 2. Use `mcp__chrome_devtools__take_screenshot` for visual comparison
 3. Verify event count matches visible events on page
 
 ### Phase 4: Compare & Fix
 
-Using the screenshot and JSON output:
-1. Verify event count matches visible events
-2. Check titles are correctly extracted
-3. Verify dates parse correctly (especially year rollover)
-4. Confirm venue names include hall info where applicable
-5. Check URLs are absolute and valid
+If scraper returns 0 events or wrong data:
+1. **Check selector**: Run debug script above to verify elements are found
+2. **Check date parsing**: Print raw date text before parsing
+3. **Check JS rendering**: Try `needs_js=True` if HTML is empty
+4. **Check date filtering**: Temporarily remove date comparison logic
 
 Common fixes:
 - Wrong CSS selector → inspect HTML more carefully
-- Missing events → check if content is JS-rendered
-- Wrong dates → adjust date parsing regex
+- Missing events → check if content is JS-rendered (`needs_js=True`)
+- Wrong dates → print raw date text, adjust regex pattern
 - Relative URLs → prepend BASE_URL
+- Different date formats → check listing vs detail page formats
 
 ### Phase 5: Add Enrichment (theatre/culture only)
 
@@ -202,6 +225,38 @@ SOURCE_EXTRACTORS = {
     ...
     "{source}": extract_{source},
 }
+```
+
+4. **Test enrichment extraction** (before importing enrichment module which requires google genai):
+```bash
+python3 -c "
+from bs4 import BeautifulSoup
+from services.http import fetch_page
+
+html = fetch_page('EVENT_DETAIL_URL', needs_js=False)
+soup = BeautifulSoup(html, 'html.parser')
+
+result = {'description': None, 'image_url': None, 'video_url': None}
+
+# Test og:image extraction
+og_image = soup.select_one(\"meta[property='og:image']\")
+if og_image and og_image.get('content'):
+    result['image_url'] = og_image['content']
+
+# Test description extraction
+paragraphs = soup.select('p')
+texts = []
+skip_patterns = ['cookie', 'newsletter', 'abonează']
+for p in paragraphs:
+    text = p.get_text(strip=True)
+    if len(text) > 50 and not any(s in text.lower() for s in skip_patterns):
+        texts.append(text)
+if texts:
+    result['description'] = ' '.join(texts[:2])[:200]
+
+print('Image:', result['image_url'])
+print('Description:', result['description'])
+"
 ```
 
 ### Phase 6: Register & Commit
