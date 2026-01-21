@@ -150,15 +150,71 @@ Common fixes:
 - Wrong dates → adjust date parsing regex
 - Relative URLs → prepend BASE_URL
 
-### Phase 5: Register & Commit
+### Phase 5: Add Enrichment (theatre/culture only)
 
-1. Add scraper to `main.py` SCRAPERS dict (if not already there)
+For theatre and culture scrapers, add an enrichment extractor to `services/enrichment.py`:
+
+1. Navigate to the event detail page in Chrome DevTools MCP and inspect available data:
+   ```
+   mcp__chrome_devtools__evaluate_script with function: "() => {
+     return {
+       og_image: document.querySelector('meta[property=\"og:image\"]')?.content,
+       og_description: document.querySelector('meta[property=\"og:description\"]')?.content,
+       paragraphs: [...document.querySelectorAll('p')].slice(0,3).map(p => p.innerText.substring(0,100))
+     };
+   }"
+   ```
+
+2. Add an extractor function to `services/enrichment.py`:
+
+```python
+def extract_{source}(soup: BeautifulSoup, url: str) -> dict:
+    """Extract enrichment data from {Source Name} event pages."""
+    result: dict = {"description": None, "image_url": None, "video_url": None}
+    
+    # Image: try og:image first
+    og_image = soup.select_one("meta[property='og:image']")
+    if og_image and og_image.get("content"):
+        result["image_url"] = og_image["content"]
+    
+    # Description: extract from content paragraphs
+    paragraphs = soup.select("p, .content p, article p")
+    texts = []
+    skip_patterns = ["cookie", "newsletter", "abonează"]  # Filter boilerplate
+    for p in paragraphs:
+        text = p.get_text(strip=True)
+        if len(text) > 50 and not any(s in text.lower() for s in skip_patterns):
+            texts.append(text)
+    if texts:
+        result["description"] = " ".join(texts[:2])[:500]
+    
+    # Video: YouTube/Vimeo embeds
+    iframe = soup.select_one("iframe[src*='youtube'], iframe[src*='vimeo']")
+    if iframe and iframe.get("src"):
+        result["video_url"] = iframe["src"]
+    
+    return result
+```
+
+3. Register the extractor in `SOURCE_EXTRACTORS` dict:
+```python
+SOURCE_EXTRACTORS = {
+    ...
+    "{source}": extract_{source},
+}
+```
+
+### Phase 6: Register & Commit
+
+1. Add scraper import to `main.py`:
+   - Add to import line: `from scrapers.{category} import ..., {name}`
+   - Add to scraper list in `run_{category}_scrapers()`
 
 2. Add source to `web/src/app/despre/page.tsx` sources list (appropriate category)
 
 3. Commit:
 ```bash
-git add scrapers/{category}/{name}.py
+git add scrapers/{category}/{name}.py main.py services/enrichment.py web/src/app/despre/page.tsx
 git commit -m "Add {Source Name} scraper"
 git push
 ```
@@ -235,4 +291,11 @@ class Event:
     source: str          # Scraper identifier (e.g., "metropolis")
     category: Literal["music", "theatre", "culture"]
     price: str | None    # Price as string (e.g., "50 RON", "Free")
+    # Enrichment fields (populated by services/enrichment.py, not scrapers)
+    description: str | None = None
+    description_source: Literal["scraped", "ai"] | None = None
+    image_url: str | None = None
+    video_url: str | None = None
 ```
+
+**Note**: Enrichment fields are populated automatically by `services/enrichment.py` after scraping, not by scrapers directly. Scrapers only need to provide the basic fields.
