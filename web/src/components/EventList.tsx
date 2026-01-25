@@ -1,8 +1,18 @@
 "use client";
 
-import { Event } from "@/types/event";
+import { Event, Category } from "@/types/event";
 import { EventCard } from "./EventCard";
-import { useMemo } from "react";
+import { Button } from "./ui/button";
+import { useMemo, useState } from "react";
+
+type CategoryFilter = Category | "all";
+
+const CATEGORY_CONFIG: Record<CategoryFilter, { label: string; emoji: string }> = {
+  all: { label: "Toate", emoji: "📅" },
+  music: { label: "Muzică", emoji: "🎵" },
+  theatre: { label: "Teatru", emoji: "🎭" },
+  culture: { label: "Cultură", emoji: "🎨" },
+};
 
 interface EventListProps {
   events: Event[];
@@ -10,7 +20,9 @@ interface EventListProps {
 }
 
 export function EventList({ events, selectedDate }: EventListProps) {
-  const filteredEvents = useMemo(() => {
+  const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>("all");
+
+  const eventsForDate = useMemo(() => {
     if (!selectedDate) return [];
     
     return events.filter((event) => {
@@ -18,6 +30,24 @@ export function EventList({ events, selectedDate }: EventListProps) {
       return eventDate.toDateString() === selectedDate.toDateString();
     });
   }, [events, selectedDate]);
+
+  const filteredEvents = useMemo(() => {
+    if (categoryFilter === "all") return eventsForDate;
+    return eventsForDate.filter((event) => event.category === categoryFilter);
+  }, [eventsForDate, categoryFilter]);
+
+  const categoryCounts = useMemo(() => {
+    const counts: Record<CategoryFilter, number> = {
+      all: eventsForDate.length,
+      music: 0,
+      theatre: 0,
+      culture: 0,
+    };
+    eventsForDate.forEach((event) => {
+      counts[event.category]++;
+    });
+    return counts;
+  }, [eventsForDate]);
 
   const formattedDate = selectedDate
     ? selectedDate.toLocaleDateString("ro-RO", {
@@ -32,10 +62,43 @@ export function EventList({ events, selectedDate }: EventListProps) {
     <div className="mt-6">
       <h2 className="text-xl font-bold mb-4 capitalize">{formattedDate}</h2>
       
+      {eventsForDate.length > 0 && (
+        <div className="flex flex-wrap gap-2 mb-4">
+          {(Object.keys(CATEGORY_CONFIG) as CategoryFilter[]).map((category) => {
+            const { label, emoji } = CATEGORY_CONFIG[category];
+            const count = categoryCounts[category];
+            const isActive = categoryFilter === category;
+            
+            if (category !== "all" && count === 0) return null;
+            
+            return (
+              <Button
+                key={category}
+                onClick={() => setCategoryFilter(category)}
+                variant={isActive ? "reverse" : "neutral"}
+                size="sm"
+                className="gap-1.5"
+              >
+                <span>{emoji}</span>
+                <span>{label}</span>
+                <span className={`
+                  px-1.5 py-0.5 text-xs rounded-base
+                  ${isActive ? "bg-main-foreground/20" : "bg-foreground/10"}
+                `}>
+                  {count}
+                </span>
+              </Button>
+            );
+          })}
+        </div>
+      )}
+
       {filteredEvents.length === 0 ? (
         <div className="rounded-base border-2 border-border bg-secondary-background p-8 text-center shadow-shadow">
           <p className="text-foreground/70">
-            Nu sunt evenimente programate pentru această zi.
+            {eventsForDate.length === 0
+              ? "Nu sunt evenimente programate pentru această zi."
+              : `Nu sunt evenimente de ${CATEGORY_CONFIG[categoryFilter].label.toLowerCase()} în această zi.`}
           </p>
         </div>
       ) : (
