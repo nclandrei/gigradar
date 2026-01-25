@@ -61,7 +61,7 @@ jobs:
       - name: Run Amp to fix scrapers
         if: steps.check-errors.outputs.has_errors == 'true'
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          AMP_API_KEY: ${{ secrets.AMP_API_KEY }}
         run: |
           # Extract first error from the errors file
           SCRAPER_NAME=$(python3 -c "import json; d=json.load(open('artifacts/scraper_errors.json')); print(d['errors'][0]['scraper_name'])")
