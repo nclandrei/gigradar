@@ -3,7 +3,7 @@
 import { Calendar } from "@/components/ui/calendar";
 import { Event } from "@/types/event";
 import { ro } from "date-fns/locale";
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 
 interface EventCalendarProps {
   events: Event[];
@@ -20,6 +20,14 @@ export function EventCalendar({
     const now = new Date();
     return new Date(now.getFullYear(), now.getMonth(), 1);
   }, []);
+
+  const [displayMonth, setDisplayMonth] = useState<Date>(selectedDate || new Date());
+
+  useEffect(() => {
+    if (selectedDate) {
+      setDisplayMonth(selectedDate);
+    }
+  }, [selectedDate]);
 
   const eventCountByDate = useMemo(() => {
     const counts = new Map<string, number>();
@@ -57,6 +65,8 @@ export function EventCalendar({
         mode="single"
         selected={selectedDate}
         onSelect={onSelectDate}
+        month={displayMonth}
+        onMonthChange={setDisplayMonth}
         weekStartsOn={1}
         locale={ro}
         disabled={{ before: firstOfMonth }}

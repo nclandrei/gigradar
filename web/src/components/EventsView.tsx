@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import { EventCalendar } from "@/components/EventCalendar";
 import { EventList } from "@/components/EventList";
 import { EventListSkeleton } from "@/components/EventCardSkeleton";
@@ -36,11 +37,43 @@ function CalendarSkeleton() {
 export function EventsView({ events }: EventsViewProps) {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [isHydrated, setIsHydrated] = useState(false);
+  const searchParams = useSearchParams();
+  const router = useRouter();
 
   useEffect(() => {
+    const year = searchParams.get("year");
+    const month = searchParams.get("month");
+    const day = searchParams.get("day");
+
+    if (year && month && day) {
+      const dateFromUrl = new Date(
+        parseInt(year, 10),
+        parseInt(month, 10) - 1,
+        parseInt(day, 10)
+      );
+      if (!isNaN(dateFromUrl.getTime())) {
+        setSelectedDate(dateFromUrl);
+        setIsHydrated(true);
+        return;
+      }
+    }
     setSelectedDate(new Date());
     setIsHydrated(true);
-  }, []);
+  }, [searchParams]);
+
+  const handleSelectDate = useCallback(
+    (date: Date | undefined) => {
+      setSelectedDate(date);
+      if (date) {
+        const params = new URLSearchParams();
+        params.set("year", date.getFullYear().toString());
+        params.set("month", (date.getMonth() + 1).toString());
+        params.set("day", date.getDate().toString());
+        router.replace(`?${params.toString()}`, { scroll: false });
+      }
+    },
+    [router]
+  );
 
   if (!isHydrated) {
     return (
@@ -56,7 +89,7 @@ export function EventsView({ events }: EventsViewProps) {
       <EventCalendar
         events={events}
         selectedDate={selectedDate}
-        onSelectDate={setSelectedDate}
+        onSelectDate={handleSelectDate}
       />
       <EventList events={events} selectedDate={selectedDate} />
     </>

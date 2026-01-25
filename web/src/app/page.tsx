@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { EventsView } from "@/components/EventsView";
@@ -78,7 +79,9 @@ export default async function Home() {
       
       <main className="flex-1 w-full">
         <div className="max-w-4xl mx-auto px-4 py-6">
-          <EventsView events={events} />
+          <Suspense fallback={null}>
+            <EventsView events={events} />
+          </Suspense>
         </div>
       </main>
       
