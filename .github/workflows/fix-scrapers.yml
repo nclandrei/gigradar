@@ -106,7 +106,7 @@ jobs:
           Do NOT commit any changes. Just fix the code and verify it works."
 
           # Run Amp with the prompt (execute mode, allow all tools)
-          amp --execute --dangerously-allow-all "$PROMPT"
+          echo "$PROMPT" | amp --execute --dangerously-allow-all
 
       - name: Create fix branch and PR
         if: steps.check-errors.outputs.has_errors == 'true' && inputs.dry_run != true
