@@ -22,6 +22,8 @@ from services.spotify import search_artist
 
 DATA_DIR = Path(__file__).parent / "web" / "public" / "data"
 EVENTS_FILE = DATA_DIR / "events.json"
+ARTIFACTS_DIR = Path(__file__).parent / "artifacts"
+ERRORS_FILE = ARTIFACTS_DIR / "scraper_errors.json"
 FESTIVAL_SCRAPERS = {garana, jazzinthepark, jfr}
 
 
@@ -37,14 +39,28 @@ def run_scraper_safely(scraper: ModuleType) -> list[Event]:
     """Run a single scraper, catching and recording any errors."""
     import traceback
     scraper_name = scraper.__name__.split(".")[-1]
+    category = scraper.__name__.split(".")[1]  # e.g., "music" from "scrapers.music.control"
+    events_url = getattr(scraper, "EVENTS_URL", None)
     try:
-        return scraper.scrape()
+        events = scraper.scrape()
+        if len(events) == 0:
+            print(f"⚠️  Scraper '{scraper_name}' returned 0 events")
+            scraper_errors.append(ScraperError(
+                scraper_name=scraper_name,
+                error_message="Scraper returned 0 events",
+                traceback="",
+                category=category,
+                events_url=events_url,
+            ))
+        return events
     except Exception as e:
         print(f"⚠️  Scraper '{scraper_name}' failed: {e}")
         scraper_errors.append(ScraperError(
             scraper_name=scraper_name,
             error_message=str(e),
             traceback=traceback.format_exc(),
+            category=category,
+            events_url=events_url,
         ))
         return []
 
@@ -209,6 +225,19 @@ def get_new_events(
     return new_events
 
 
+def save_scraper_errors(errors: list[ScraperError]) -> None:
+    """Save scraper errors to JSON for the fix-scrapers workflow."""
+    from dataclasses import asdict
+    ARTIFACTS_DIR.mkdir(exist_ok=True)
+    
+    error_dicts = [asdict(e) for e in errors]
+    with open(ERRORS_FILE, "w") as f:
+        json.dump({
+            "timestamp": datetime.now().isoformat(),
+            "errors": error_dicts,
+        }, f, indent=2)
+
+
 def main() -> None:
     """Main orchestrator."""
     print("Loading existing events...")
@@ -255,7 +284,16 @@ def main() -> None:
     print("Saving results (merging new events and removing past events)...")
     save_results(deduped_music, deduped_theatre, deduped_culture, existing_events)
 
-    print("Done!")
+    if scraper_errors:
+        print(f"\n⚠️  {len(scraper_errors)} scraper(s) had issues:")
+        for err in scraper_errors:
+            print(f"  - {err.scraper_name}: {err.error_message}")
+        save_scraper_errors(scraper_errors)
+        print(f"Errors saved to {ERRORS_FILE}")
+        print("Done with errors!")
+        exit(2)  # Signal to GH Actions that scrapers need fixing
+    else:
+        print("Done!")
 
 
 if __name__ == "__main__":

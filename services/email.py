@@ -14,6 +14,8 @@ class ScraperError:
     scraper_name: str
     error_message: str
     traceback: str
+    category: str | None = None
+    events_url: str | None = None
 
 
 def send_scraper_alert(errors: list[ScraperError], to_email: str) -> None:
