@@ -84,8 +84,11 @@ jobs:
 
           INSTRUCTIONS:
           1. First, load the generating-scrapers skill using the skill tool
-          2. Read the current scraper code
-          3. Use Playwright via Python to inspect the page:
+          2. Read the current scraper code to understand the existing selectors
+          3. Create tmp/ directory if needed: mkdir -p tmp
+          
+          4. VISUAL INSPECTION (repeat as needed):
+             Take a screenshot and inspect the page structure using Playwright:
              python3 -c \"
              from playwright.sync_api import sync_playwright
              with sync_playwright() as p:
@@ -93,15 +96,41 @@ jobs:
                  page = browser.new_page()
                  page.goto('$EVENTS_URL')
                  page.wait_for_timeout(3000)
-                 print(page.content()[:5000])
-                 page.screenshot(path='tmp/debug_page.png')
+                 page.screenshot(path='tmp/page_screenshot.png', full_page=True)
+                 # Get accessibility tree for structure
+                 snapshot = page.accessibility.snapshot()
+                 print('Page title:', page.title())
+                 print('Accessibility tree:', snapshot)
                  browser.close()
              \"
-          4. Analyze the HTML structure and compare with the scraper's selectors
-          5. Fix the scraper code
-          6. Test the fix by running: python3 -c \"from scrapers.$CATEGORY.$SCRAPER_NAME import scrape; events = scrape(); print(f'{len(events)} events found'); [print(f'  - {e.title}') for e in events[:3]]\"
-          7. If the test returns 0 events, iterate and try again
-          8. Once working, confirm the fix is complete
+             Then use the look_at tool to examine tmp/page_screenshot.png and understand the visual layout.
+          
+          5. Get the raw HTML to find correct selectors:
+             python3 -c \"
+             from playwright.sync_api import sync_playwright
+             with sync_playwright() as p:
+                 browser = p.chromium.launch()
+                 page = browser.new_page()
+                 page.goto('$EVENTS_URL')
+                 page.wait_for_timeout(3000)
+                 print(page.content())
+                 browser.close()
+             \" > tmp/page_content.html
+             Then read tmp/page_content.html to find the correct CSS selectors.
+          
+          6. Fix the scraper code based on what you found
+          
+          7. TEST THE FIX:
+             python3 -c \"from scrapers.$CATEGORY.$SCRAPER_NAME import scrape; events = scrape(); print(f'{len(events)} events found'); [print(f'  - {e.title}') for e in events[:3]]\"
+          
+          8. ITERATE: If 0 events returned:
+             - Take another screenshot to see current page state
+             - Check if page needs JS rendering (needs_js=True)
+             - Check if selectors need adjustment
+             - Fix and test again
+             - Repeat until events are returned
+          
+          9. Once working (events > 0), confirm the fix is complete
 
           Do NOT commit any changes. Just fix the code and verify it works."
 
