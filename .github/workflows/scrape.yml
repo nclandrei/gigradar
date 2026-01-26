@@ -5,6 +5,9 @@ on:
     - cron: '0 9 * * *'  # Daily at 9am UTC (festivals only run on 1st of month via code logic)
   workflow_dispatch:       # Manual trigger
 
+permissions:
+  contents: write
+
 jobs:
   scrape:
     runs-on: ubuntu-latest
